@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>ヒアリングを申込｜FLOW｜BEYOND Playbook</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23060b1a'/><stop offset='1' stop-color='%230a1e3d'/></linearGradient></defs><rect width='100' height='100' rx='18' fill='url(%23g)'/><text x='50' y='80' font-family='Inter,Arial,sans-serif' font-weight='900' font-size='92' fill='%23f5c542' text-anchor='middle' letter-spacing='-2'>F</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff; --bg-soft: #f7f6f3; --bg-dark: #0a0e1a;
+  --text: #1a1a1a; --text-soft: #555; --line: #e5e3dc;
+  --accent: #0a1e3d; --gold: #b89968; --red: #8b1c1c;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text); background: var(--bg-soft);
+  line-height: 1.75; font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ヘッダー */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.96); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1200px; margin: 0 auto;
+}
+.logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo .brand-logo {
+  height: 38px; width: auto; display: block;
+  filter: brightness(0) saturate(100%);
+}
+.logo .brand-name {
+  font-family: 'Inter', sans-serif; font-weight: 900; font-size: 26px;
+  letter-spacing: 0.04em; color: var(--accent);
+  padding-left: 14px; border-left: 1px solid var(--line);
+  line-height: 1;
+}
+.header-inner { padding: 20px 24px; }
+@media(max-width: 640px) {
+  .logo .brand-logo { height: 30px; }
+  .logo .brand-name { font-size: 20px; padding-left: 10px; }
+  .logo { gap: 10px; }
+}
+.back-link { font-size: 13px; color: var(--text-soft); }
+.back-link:hover { color: var(--accent); }
+
+/* メイン */
+main { max-width: 640px; margin: 0 auto; padding: 64px 24px 100px; }
+.page-title {
+  font-size: 32px; font-weight: 900; line-height: 1.4;
+  margin-bottom: 16px;
+}
+.page-lead {
+  font-size: 15px; line-height: 2; color: var(--text-soft);
+  margin-bottom: 40px;
+}
+.page-lead strong { color: var(--text); }
+
+/* スピード約束ボックス */
+.promise {
+  background: var(--bg-dark); color: #fff;
+  padding: 20px 24px; border-radius: 8px;
+  margin-bottom: 40px; display: flex; gap: 16px; align-items: center;
+}
+.promise-icon { font-size: 28px; }
+.promise-text { font-size: 14px; line-height: 1.7; }
+.promise-text strong { color: var(--gold); font-size: 18px; font-weight: 800; }
+
+/* フォーム */
+form {
+  background: #fff; padding: 40px;
+  border-radius: 8px; border: 1px solid var(--line);
+}
+.field { margin-bottom: 24px; }
+.field label {
+  display: block; font-size: 14px; font-weight: 700;
+  margin-bottom: 8px; color: var(--text);
+}
+.field label .required {
+  color: var(--red); font-size: 12px; margin-left: 4px;
+}
+.field label .optional {
+  color: var(--text-soft); font-size: 12px; margin-left: 4px; font-weight: 400;
+}
+.field input, .field textarea, .field select {
+  width: 100%; padding: 12px 16px; border: 1px solid var(--line);
+  border-radius: 6px; font-size: 15px; font-family: inherit;
+  background: #fff; color: var(--text); transition: border-color 0.2s;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  outline: none; border-color: var(--accent);
+}
+.field textarea { min-height: 120px; resize: vertical; }
+.field .help {
+  font-size: 12px; color: var(--text-soft); margin-top: 6px;
+}
+
+/* ラジオ */
+.field .radio-group { display: flex; gap: 12px; flex-wrap: wrap; }
+.field .radio-group label {
+  flex: 1; min-width: 140px;
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 16px; border: 1px solid var(--line);
+  border-radius: 6px; cursor: pointer; transition: all 0.2s;
+  margin-bottom: 0; font-weight: 500;
+}
+.field .radio-group label:hover { border-color: var(--accent); }
+.field .radio-group input[type="radio"] { width: auto; }
+.field .radio-group input[type="radio"]:checked + span { color: var(--accent); font-weight: 700; }
+
+/* 送信ボタン */
+.submit-btn {
+  width: 100%; padding: 20px;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 6px;
+  font-size: 16px; font-weight: 700;
+  cursor: pointer; transition: all 0.2s;
+  font-family: inherit;
+}
+.submit-btn:hover { background: #061429; transform: translateY(-2px); }
+.submit-btn:disabled { background: #999; cursor: not-allowed; transform: none; }
+
+.privacy-note {
+  font-size: 12px; color: var(--text-soft);
+  margin-top: 16px; text-align: center; line-height: 1.7;
+}
+
+/* 完了画面 */
+.thanks {
+  background: #fff; padding: 64px 40px;
+  border-radius: 8px; text-align: center;
+  border: 1px solid var(--line);
+}
+.thanks-icon {
+  width: 80px; height: 80px; margin: 0 auto 24px;
+  background: var(--accent); color: var(--gold);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 40px;
+}
+.thanks h2 {
+  font-size: 24px; font-weight: 900; margin-bottom: 16px;
+}
+.thanks p {
+  font-size: 15px; line-height: 1.9; color: var(--text-soft);
+  margin-bottom: 16px;
+}
+.thanks .highlight {
+  background: var(--bg-soft); padding: 20px;
+  border-radius: 6px; margin: 24px 0;
+  font-weight: 700; color: var(--accent);
+}
+
+@media(max-width: 640px) {
+  main { padding: 32px 16px 64px; }
+  form { padding: 24px; }
+  .page-title { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="../" class="logo">
+      <img src="../assets/beyond_logo.png" alt="BEYOND Holdings" class="brand-logo">
+      <span class="brand-name">FLOW</span>
+    </a>
+    <a href="/" class="back-link">← トップへ戻る</a>
+  </div>
+</header>
+
+<main id="main">
+
+<div id="form-area">
+
+<h1 class="page-title">ヒアリングを、申し込む。</h1>
+<p class="page-lead">
+  まずは、お互いに見極めましょう。<br>
+  ヒアリングまでは <strong>無料</strong> です。<br>
+  <strong>1時間以内</strong>に折り返します。
+</p>
+
+<div class="promise">
+  <div class="promise-icon">⚡</div>
+  <div class="promise-text">
+    <strong>1時間以内に折り返し</strong><br>
+    24時間受付・全国対応。お急ぎの場合はその旨を備考欄にご記入ください。
+  </div>
+</div>
+
+<form id="apply-form" method="post" action="/api/submit">
+
+  <div class="field">
+    <label for="name">お名前<span class="required">必須</span></label>
+    <input type="text" id="name" name="name" required placeholder="山田 太郎">
+  </div>
+
+  <div class="field">
+    <label for="company">会社名<span class="required">必須</span></label>
+    <input type="text" id="company" name="company" required placeholder="株式会社○○">
+  </div>
+
+  <div class="field">
+    <label for="industry">業種<span class="optional">任意</span></label>
+    <select id="industry" name="industry">
+      <option value="">選択してください</option>
+      <option>製造業</option>
+      <option>建設業</option>
+      <option>物流</option>
+      <option>サービス業</option>
+      <option>小売</option>
+      <option>飲食</option>
+      <option>不動産</option>
+      <option>IT・情報通信</option>
+      <option>その他</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="revenue">年商規模<span class="optional">任意</span></label>
+    <select id="revenue" name="revenue">
+      <option value="">選択してください</option>
+      <option>1億円未満</option>
+      <option>1〜3億円</option>
+      <option>3〜5億円</option>
+      <option>5〜10億円</option>
+      <option>10〜30億円</option>
+      <option>30億円超</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label>ご連絡方法<span class="required">必須</span></label>
+    <div class="radio-group">
+      <label>
+        <input type="radio" name="contact_method" value="phone" required>
+        <span>電話</span>
+      </label>
+      <label>
+        <input type="radio" name="contact_method" value="email">
+        <span>メール</span>
+      </label>
+      <label>
+        <input type="radio" name="contact_method" value="line">
+        <span>LINE</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="contact">ご連絡先 (電話番号 or メールアドレス)<span class="required">必須</span></label>
+    <input type="text" id="contact" name="contact" required placeholder="090-XXXX-XXXX または name@example.com">
+    <p class="help">本件以外の用途には使用しません。1時間以内に折り返します。</p>
+  </div>
+
+  <div class="field">
+    <label for="message">ご状況・ご相談内容<span class="optional">任意・一言でもOK</span></label>
+    <textarea id="message" name="message" placeholder="例: 銀行に追加融資を断られた / 補助金を申請したいが経験がない / 代表交代直後で何から手をつければよいか分からない 等"></textarea>
+  </div>
+
+  <div class="field">
+    <label for="urgency">緊急度<span class="optional">任意</span></label>
+    <select id="urgency" name="urgency">
+      <option value="">選択してください</option>
+      <option>今週中に動きたい (緊急)</option>
+      <option>2週間以内に動きたい</option>
+      <option>1ヶ月以内に動きたい</option>
+      <option>情報収集段階・タイミングは未定</option>
+    </select>
+  </div>
+
+  <button type="submit" class="submit-btn" id="submit-btn">この内容で、ヒアリングを申し込む</button>
+
+  <p class="privacy-note">
+    送信いただいた情報は、BEYOND Holdings株式会社にて<br>
+    本件のヒアリングとそのご返答にのみ使用します。
+  </p>
+
+</form>
+
+</div>
+
+<div id="thanks-area" style="display:none;">
+  <div class="thanks">
+    <div class="thanks-icon">✓</div>
+    <h2>お申し込み、ありがとうございました。</h2>
+    <p>担当より、<strong>1時間以内</strong>にご連絡を差し上げます。<br>(深夜・早朝の場合は翌朝の対応となる場合がございます)</p>
+    <div class="highlight">
+      まず、話しましょう。<br>
+      合うか合わないかは、それから決めましょう。
+    </div>
+    <p style="font-size:13px;">
+      <a href="/" style="color:var(--accent); text-decoration:underline;">← トップに戻る</a>
+    </p>
+  </div>
+</div>
+
+</main>
+
+<script>
+const form = document.getElementById('apply-form');
+const submitBtn = document.getElementById('submit-btn');
+const formArea = document.getElementById('form-area');
+const thanksArea = document.getElementById('thanks-area');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  submitBtn.disabled = true;
+  submitBtn.textContent = '送信中...';
+
+  const data = Object.fromEntries(new FormData(form));
+
+  try {
+    // Cloudflare Pages Functions の /api/submit に送信
+    // 未デプロイの場合はエラーになるが、エラーでもサンクス画面を出す (フォーム動作確認のため)
+    const res = await fetch('/api/submit', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+    // 成功・失敗どちらでもサンクス表示 (現段階は仮実装)
+  } catch (err) {
+    // ローカル動作時はエラーになる。サンクス画面は表示。
+    console.warn('Form submit (local mode):', err.message);
+  }
+
+  // 完了画面表示
+  formArea.style.display = 'none';
+  thanksArea.style.display = 'block';
+  window.scrollTo({top: 0, behavior: 'smooth'});
+
+  // データをコンソールに出力 (確認用)
+  console.log('[Submitted Data]', data);
+});
+</script>
+
+</body>
+</html>

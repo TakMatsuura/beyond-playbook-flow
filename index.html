@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="FLOW｜お金の流れを、止めない。中小企業の資金繰り・銀行交渉・補助金活用に、即動いて、即返して、即決める。1時間以内に折り返します。BEYOND Holdings.">
+<meta name="keywords" content="中小企業 資金繰り,銀行交渉,リスケ,補助金,財務改善,事業承継,中小企業経営,BEYOND Holdings">
+<meta property="og:title" content="FLOW｜お金の流れを、止めない。｜BEYOND Playbook">
+<meta property="og:description" content="中小企業の資金繰り・銀行交渉・補助金を、即動いて、即返して、即決める。1時間以内に折り返します。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://flow.beyond-holdings.co.jp/">
+<title>FLOW｜お金の流れを、止めない。｜BEYOND Playbook</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23060b1a'/><stop offset='1' stop-color='%230a1e3d'/></linearGradient></defs><rect width='100' height='100' rx='18' fill='url(%23g)'/><text x='50' y='80' font-family='Inter,Arial,sans-serif' font-weight='900' font-size='92' fill='%23f5c542' text-anchor='middle' letter-spacing='-2'>F</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f7f6f3;
+  --bg-dark: #060b1a;
+  --text: #1a1a1a;
+  --text-soft: #555;
+  --line: #e5e3dc;
+  --accent: #0a1e3d;
+  --accent-deep: #050d1f;
+  --gold: #d4a843;
+  --gold-bright: #f5c542;
+  --gold-deep: #a07d2c;
+  --red: #8b1c1c;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.75;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+.en { font-family: 'Inter', sans-serif; letter-spacing: 0.02em; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+/* ============ ヘッダー ============ */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1200px; margin: 0 auto;
+}
+.logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo .brand-logo {
+  height: 38px; width: auto; display: block;
+  filter: brightness(0) saturate(100%);
+}
+.logo .brand-name {
+  font-family: 'Inter', sans-serif; font-weight: 900; font-size: 26px;
+  letter-spacing: 0.04em; color: var(--accent);
+  padding-left: 14px; border-left: 1px solid var(--line);
+  line-height: 1;
+}
+.header-inner { padding: 20px 24px; }
+@media(max-width: 640px) {
+  .logo .brand-logo { height: 30px; }
+  .logo .brand-name { font-size: 20px; padding-left: 10px; }
+  .logo { gap: 10px; }
+}
+.header-cta {
+  display: flex; gap: 8px; align-items: center;
+}
+.header-cta .quick {
+  font-size: 13px; padding: 8px 16px; background: var(--accent); color: #fff;
+  border-radius: 4px; font-weight: 700;
+}
+@media(max-width: 640px) {
+  .header-cta .quick { padding: 6px 12px; font-size: 12px; }
+  .logo .brand-name { font-size: 18px; }
+}
+
+/* ============ ヒーロー (派手な動き!) ============ */
+.hero {
+  padding: 100px 0 160px;
+  border-bottom: 1px solid #1a2845;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg,
+    #060b1a 0%,
+    #0a1e3d 25%,
+    #050d20 50%,
+    #0d2548 75%,
+    #060b1a 100%
+  );
+  background-size: 400% 400%;
+  animation: bgFlow 20s ease infinite;
+  color: #fff;
+}
+.hero .hero-jp { color: #fff; }
+.hero .hero-lead { color: rgba(255,255,255,0.85); }
+.hero .hero-lead strong { color: #fff; }
+.hero .cta-note { color: rgba(255,255,255,0.7); }
+.hero .cta-note strong { color: var(--gold-bright); }
+@keyframes bgFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+.hero > .container-narrow { position: relative; z-index: 5; }
+
+/* 水の流れ - ダークネイビー海面 6層 */
+.hero-waves {
+  position: absolute; left: 0; right: 0; bottom: 0; top: 0;
+  z-index: 1; pointer-events: none; overflow: hidden;
+}
+.wave-svg {
+  position: absolute; left: 0;
+  width: 200%; transform: translateX(0);
+}
+.wave-svg.layer-back {
+  fill: rgba(40, 80, 160, 0.20); height: 320px;
+  animation: waveScroll 60s linear infinite;
+  bottom: -80px;
+}
+.wave-svg.layer-1 {
+  fill: rgba(60, 110, 200, 0.18); height: 280px;
+  animation: waveScroll 38s linear infinite;
+  bottom: -40px;
+}
+.wave-svg.layer-2 {
+  fill: rgba(212, 168, 67, 0.18); height: 240px;
+  animation: waveScroll 28s linear infinite reverse;
+  bottom: -20px;
+}
+.wave-svg.layer-3 {
+  fill: rgba(20, 60, 130, 0.30); height: 200px;
+  animation: waveScroll 20s linear infinite;
+  bottom: 0;
+}
+.wave-svg.layer-mid {
+  fill: rgba(212, 168, 67, 0.14); height: 100px;
+  animation: waveScroll 14s linear infinite reverse;
+  bottom: 140px; opacity: 0.9;
+}
+.wave-svg.layer-top {
+  fill: rgba(100, 150, 220, 0.10); height: 60px;
+  animation: waveScroll 10s linear infinite;
+  bottom: 260px; opacity: 0.7;
+}
+@keyframes waveScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* キャッシュフロー風 流れる光のライン (ゴールド強化) */
+.flow-lines {
+  position: absolute; inset: 0;
+  z-index: 2; pointer-events: none; overflow: hidden;
+}
+.flow-line {
+  position: absolute; left: -50%; width: 60%; height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(212, 168, 67, 0.9) 30%,
+    rgba(245, 197, 66, 1) 50%,
+    rgba(212, 168, 67, 0.9) 70%,
+    transparent 100%
+  );
+  box-shadow: 0 0 8px rgba(245, 197, 66, 0.6);
+  filter: blur(0.5px);
+  animation: flowLineMove 6s linear infinite;
+  opacity: 0;
+}
+.flow-line.thick {
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(212, 168, 67, 0.6) 30%,
+    var(--gold-bright) 50%,
+    rgba(212, 168, 67, 0.6) 70%,
+    transparent 100%
+  );
+  box-shadow: 0 0 12px rgba(245, 197, 66, 0.8);
+  filter: blur(1px);
+}
+@keyframes flowLineMove {
+  0%   { left: -60%; opacity: 0; }
+  10%  { opacity: 0.7; }
+  90%  { opacity: 0.7; }
+  100% { left: 110%; opacity: 0; }
+}
+
+/* ささささっ! 細い速い線 (シャープな流れ) */
+.dash-lines {
+  position: absolute; inset: 0;
+  z-index: 3; pointer-events: none; overflow: hidden;
+}
+.dash {
+  position: absolute; left: -50%; height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(245, 197, 66, 0.85) 40%,
+    rgba(255, 248, 214, 1) 50%,
+    rgba(245, 197, 66, 0.85) 60%,
+    transparent 100%
+  );
+  box-shadow: 0 0 6px rgba(245, 197, 66, 0.8);
+  animation: dashFlow linear infinite;
+  opacity: 0;
+}
+.dash.thick { height: 2px; box-shadow: 0 0 10px rgba(245, 197, 66, 1); }
+@keyframes dashFlow {
+  0%   { left: -50%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+/* 横長の光リボン (流れ感) */
+.flow-ribbons {
+  position: absolute; inset: 0;
+  z-index: 2; pointer-events: none; overflow: hidden;
+}
+.flow-ribbon {
+  position: absolute; left: -100%;
+  width: 80%; height: 140px;
+  background: radial-gradient(ellipse at center,
+    rgba(245, 197, 66, 0.35) 0%,
+    rgba(245, 197, 66, 0.18) 30%,
+    rgba(245, 197, 66, 0.06) 60%,
+    transparent 100%
+  );
+  filter: blur(28px);
+  animation: ribbonFlow 14s ease-in-out infinite;
+  opacity: 0;
+}
+.flow-ribbon.r1 { top: 12%; animation-duration: 16s; animation-delay: 0s;   height: 120px; }
+.flow-ribbon.r2 { top: 38%; animation-duration: 20s; animation-delay: 4s;   height: 180px; }
+.flow-ribbon.r3 { top: 62%; animation-duration: 18s; animation-delay: 8s;   height: 160px; }
+.flow-ribbon.r4 { top: 82%; animation-duration: 22s; animation-delay: 12s;  height: 100px; }
+@keyframes ribbonFlow {
+  0%   { left: -80%; opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+/* キラキラ粒子(光の粒) */
+.hero-sparkles {
+  position: absolute; inset: 0; pointer-events: none;
+  z-index: 3; overflow: hidden;
+}
+.sparkle {
+  position: absolute; width: 4px; height: 4px;
+  background: var(--gold-bright); border-radius: 50%;
+  opacity: 0; animation: sparkleRise 7s ease-in infinite;
+  box-shadow:
+    0 0 12px rgba(245, 197, 66, 1),
+    0 0 24px rgba(245, 197, 66, 0.5);
+}
+@keyframes sparkleRise {
+  0%   { opacity: 0; transform: translateY(0) scale(0.6); }
+  15%  { opacity: 0.9; }
+  85%  { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-420px) scale(1.4); }
+}
+
+.hero-en {
+  font-family: 'Inter', sans-serif; font-weight: 800;
+  font-size: clamp(56px, 10vw, 120px);
+  letter-spacing: 0.08em;
+  line-height: 1; margin-bottom: 28px;
+  background: linear-gradient(
+    100deg,
+    #c9a14a 0%,
+    var(--gold-bright) 30%,
+    #fff8d6 50%,
+    var(--gold-bright) 70%,
+    #c9a14a 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gradFlow 5s ease-in-out infinite;
+  text-shadow: 0 0 40px rgba(245, 197, 66, 0.3);
+  filter: drop-shadow(0 4px 24px rgba(212, 168, 67, 0.3));
+}
+@keyframes gradFlow {
+  0%, 100% { background-position: 0% 0; }
+  50%      { background-position: 100% 0; }
+}
+.hero-jp {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 900; line-height: 1.4;
+  margin-bottom: 32px; color: var(--text);
+}
+.hero-lead {
+  font-size: clamp(16px, 2vw, 18px); line-height: 2;
+  margin-bottom: 40px; color: var(--text-soft);
+}
+.hero-lead strong { color: var(--text); font-weight: 700; }
+.cta-group {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+  margin-bottom: 16px;
+}
+.cta-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 20px 16px; font-size: 15px; font-weight: 700;
+  border-radius: 6px; border: 2px solid var(--accent);
+  background: #fff; color: var(--accent);
+  transition: all 0.2s;
+}
+.cta-btn { position: relative; overflow: hidden; }
+.cta-btn::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  width: 0; height: 0; border-radius: 50%;
+  background: rgba(245, 197, 66, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+.cta-btn:hover::before { width: 400px; height: 400px; }
+.cta-btn > * { position: relative; z-index: 1; }
+.cta-btn:hover { background: var(--accent); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(10,30,61,0.2); }
+.cta-btn.primary { background: var(--accent); color: #fff; }
+.cta-btn.primary:hover { background: #061429; }
+.cta-btn.primary::before { background: rgba(245, 197, 66, 0.6); }
+
+/* ヒーロー (暗背景) のCTAは全部白で統一・清潔感重視 */
+.hero .cta-btn {
+  background: #fff; color: var(--accent); border-color: #fff;
+}
+.hero .cta-btn:hover {
+  background: var(--gold-bright); color: var(--accent-deep);
+  border-color: var(--gold-bright);
+  box-shadow: 0 8px 24px rgba(245, 197, 66, 0.3);
+}
+.hero .cta-btn.primary {
+  background: #fff; color: var(--accent); border-color: #fff;
+  font-weight: 800;
+}
+.hero .cta-btn.primary:hover {
+  background: var(--gold-bright); color: var(--accent-deep);
+  border-color: var(--gold-bright);
+}
+.cta-note { font-size: 13px; color: var(--text-soft); text-align: center; }
+.cta-note strong { color: var(--red); font-weight: 700; }
+@media(max-width: 640px) {
+  .hero { padding: 56px 0 72px; }
+  .cta-group { grid-template-columns: 1fr; }
+  .cta-btn { padding: 16px; font-size: 14px; }
+}
+
+/* ============ セクション共通 ============ */
+section { padding: 100px 0; }
+@media(max-width: 640px) { section { padding: 64px 0; } }
+.section-label {
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 13px;
+  letter-spacing: 0.2em; color: var(--gold); margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(24px, 4vw, 36px); font-weight: 900; line-height: 1.4;
+  margin-bottom: 24px;
+}
+.section-lead {
+  font-size: 17px; line-height: 2; color: var(--text-soft);
+  margin-bottom: 56px;
+}
+
+/* ============ ②共感 / 論点リスト ============ */
+.points-section { background: var(--bg-soft); }
+.points-list { list-style: none; }
+.points-list li {
+  padding: 20px 0 20px 32px;
+  border-bottom: 1px solid var(--line);
+  position: relative; font-size: 16px; line-height: 1.7;
+}
+.points-list li::before {
+  content: '◆'; position: absolute; left: 0; top: 20px;
+  color: var(--gold); font-size: 14px;
+}
+.points-list li:last-child { border-bottom: none; }
+.points-cta { margin-top: 48px; text-align: center; font-size: 18px; font-weight: 700; line-height: 1.8; }
+
+/* ============ ③数字 ============ */
+.stats-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  margin-bottom: 48px;
+}
+.stat-card {
+  background: var(--bg-dark); color: #fff; padding: 48px 24px;
+  border-radius: 8px; text-align: center;
+}
+.stat-num {
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 56px;
+  color: var(--gold); line-height: 1; margin-bottom: 12px;
+}
+.stat-label { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.85); }
+@media(max-width: 640px) {
+  .stats-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ ④解き方 ============ */
+.solutions-list { display: grid; gap: 24px; }
+.solution-card {
+  border: 1px solid var(--line); border-radius: 8px; padding: 32px;
+  display: grid; grid-template-columns: 80px 1fr; gap: 24px;
+  transition: all 0.2s;
+}
+.solution-card:hover { box-shadow: 0 8px 24px rgba(10,30,61,0.08); transform: translateY(-2px); }
+.solution-num {
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 48px;
+  color: var(--accent); line-height: 1;
+}
+.solution-body h3 { font-size: 20px; margin-bottom: 12px; font-weight: 700; }
+.solution-period { display: inline-block; font-size: 12px; padding: 2px 10px; background: var(--gold); color: #fff; border-radius: 99px; margin-left: 8px; font-weight: 700; }
+.solution-body p { color: var(--text-soft); line-height: 1.9; }
+.solution-body p + p { margin-top: 12px; }
+@media(max-width: 640px) {
+  .solution-card { grid-template-columns: 1fr; padding: 24px; }
+  .solution-num { font-size: 36px; }
+}
+
+/* ============ ⑤事例 ============ */
+.case-section { background: var(--bg-soft); }
+.case-card {
+  background: #fff; border-radius: 8px; padding: 40px;
+  border-left: 4px solid var(--accent); margin-bottom: 32px;
+}
+.case-meta {
+  display: inline-block; font-size: 12px; font-weight: 700; padding: 4px 12px;
+  background: var(--accent); color: #fff; border-radius: 4px;
+  letter-spacing: 0.05em; margin-bottom: 16px;
+}
+.case-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.case-detail { color: var(--text-soft); margin-bottom: 20px; line-height: 1.9; }
+.case-result {
+  background: var(--bg-soft); border-radius: 6px; padding: 20px;
+  font-weight: 700; line-height: 2;
+}
+.case-result strong { color: var(--accent); }
+.consulting-list { display: grid; gap: 16px; margin-top: 32px; }
+.consulting-item {
+  background: #fff; padding: 24px; border-radius: 6px; border: 1px dashed var(--line);
+}
+.consulting-quote {
+  font-size: 15px; line-height: 1.9; color: var(--text);
+  margin-bottom: 8px; font-weight: 500;
+}
+.consulting-meta { font-size: 12px; color: var(--text-soft); }
+
+/* ============ ⑥なぜBEYOND ============ */
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+.why-card { padding: 32px; border: 1px solid var(--line); border-radius: 8px; }
+.why-num {
+  font-family: 'Inter', sans-serif; font-weight: 800;
+  font-size: 14px; color: var(--gold); letter-spacing: 0.15em; margin-bottom: 12px;
+}
+.why-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; line-height: 1.5; }
+.why-card p { font-size: 14px; line-height: 1.9; color: var(--text-soft); }
+@media(max-width: 640px) {
+  .why-grid { grid-template-columns: 1fr; }
+}
+.speed-table {
+  width: 100%; border-collapse: collapse; margin-top: 32px;
+  background: var(--bg-dark); color: #fff; border-radius: 8px; overflow: hidden;
+}
+.speed-table th, .speed-table td { padding: 16px 20px; text-align: left; font-size: 14px; }
+.speed-table th { background: rgba(255,255,255,0.05); font-weight: 700; }
+.speed-table td:last-child { color: var(--gold); font-weight: 700; }
+.speed-table tr { border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+/* ============ ⑦料金 ============ */
+.pricing-section { background: var(--bg-dark); color: #fff; }
+.pricing-section .section-title { color: #fff; }
+.pricing-block { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.15); }
+.pricing-block:last-child { border-bottom: none; }
+.pricing-label {
+  display: inline-block; font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: 13px; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 16px;
+}
+.pricing-headline { font-size: 24px; font-weight: 800; margin-bottom: 16px; line-height: 1.5; }
+.pricing-detail { font-size: 16px; line-height: 2; color: rgba(255,255,255,0.85); }
+.pricing-detail strong { color: var(--gold); font-weight: 700; }
+
+/* ============ ⑧私たちのスタンス ============ */
+.message-section { background: var(--bg-soft); }
+.stance-text {
+  font-size: 17px; line-height: 2.2; color: var(--text);
+  padding-left: 24px; border-left: 3px solid var(--gold);
+}
+.stance-text p + p { margin-top: 20px; }
+.stance-text strong { color: var(--accent); font-weight: 700; }
+.stance-signature {
+  margin-top: 40px !important; font-size: 15px;
+  font-weight: 700; color: var(--accent);
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  letter-spacing: 0.02em;
+}
+@media(max-width: 640px) {
+  .stance-text { padding-left: 16px; font-size: 15px; }
+}
+
+/* ============ ⑨組まない会社 ============ */
+.filter-section { background: var(--bg-soft); }
+.filter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+.filter-block h3 {
+  font-size: 20px; font-weight: 800; margin-bottom: 24px;
+  padding-bottom: 12px; border-bottom: 2px solid;
+}
+.filter-block.good h3 { color: var(--accent); border-color: var(--accent); }
+.filter-block.bad h3 { color: var(--red); border-color: var(--red); }
+.filter-list { list-style: none; }
+.filter-list li {
+  padding: 12px 0 12px 24px; font-size: 15px; line-height: 1.7;
+  position: relative;
+}
+.filter-block.good .filter-list li::before {
+  content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 800;
+}
+.filter-block.bad .filter-list li::before {
+  content: '✕'; position: absolute; left: 0; color: var(--red); font-weight: 800;
+}
+@media(max-width: 768px) {
+  .filter-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ============ ⑩FAQ ============ */
+.faq-list { display: grid; gap: 16px; }
+.faq-item {
+  border: 1px solid var(--line); border-radius: 6px; padding: 24px 28px;
+}
+.faq-q {
+  font-weight: 700; font-size: 16px; margin-bottom: 12px;
+  display: flex; gap: 12px; line-height: 1.6;
+}
+.faq-q::before { content: 'Q'; font-family: 'Inter', sans-serif; font-weight: 800; color: var(--gold); }
+.faq-a {
+  font-size: 15px; line-height: 1.9; color: var(--text-soft); padding-left: 22px;
+}
+
+/* ============ ⑪大CTA再掲 ============ */
+.final-cta {
+  padding: 100px 0; text-align: center;
+  background: var(--accent); color: #fff;
+}
+.final-cta-title {
+  font-size: clamp(24px, 4vw, 36px); font-weight: 900; line-height: 1.6;
+  margin-bottom: 16px;
+}
+.cta-line {
+  display: block;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  line-break: strict;
+}
+.final-cta-sub { font-size: 18px; margin-bottom: 48px; opacity: 0.85; }
+.final-cta .cta-group { max-width: 720px; margin: 0 auto 16px; }
+.final-cta .cta-btn { background: #fff; color: var(--accent); border-color: #fff; }
+.final-cta .cta-btn:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
+.final-cta .cta-note { color: rgba(255,255,255,0.85); }
+.final-cta .cta-note strong { color: var(--gold); }
+
+/* ============ フッター ============ */
+footer { background: #0a0e1a; color: rgba(255,255,255,0.7); padding: 56px 0 32px; font-size: 13px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand .brand-name { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 24px; color: #fff; margin-bottom: 8px; }
+.footer-brand p { line-height: 1.8; }
+.footer-col h4 { color: #fff; font-size: 13px; letter-spacing: 0.1em; margin-bottom: 16px; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 8px; }
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+  padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  font-size: 12px;
+}
+@media(max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* スクロールフェードイン */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in.delay-1 { transition-delay: 0.1s; }
+.fade-in.delay-2 { transition-delay: 0.2s; }
+.fade-in.delay-3 { transition-delay: 0.3s; }
+
+/* 数字カウントアップ */
+.stat-num {
+  transition: transform 0.3s ease;
+}
+.stat-card:hover .stat-num {
+  transform: scale(1.05);
+}
+
+/* ============ フローティングCTA (モバイル下部固定) ============ */
+.float-cta {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+  background: var(--accent); padding: 12px; gap: 8px;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+}
+.float-cta a {
+  flex: 1; text-align: center; padding: 12px;
+  background: #fff; color: var(--accent); border-radius: 4px;
+  font-weight: 700; font-size: 13px;
+}
+@media(max-width: 640px) {
+  .float-cta { display: flex; }
+  body { padding-bottom: 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ ヘッダー ============ -->
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <img src="assets/beyond_logo.png" alt="BEYOND Holdings" class="brand-logo">
+      <span class="brand-name">FLOW</span>
+    </a>
+    <div class="header-cta">
+      <a href="#cta" class="quick">ヒアリング申込</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ① ヒーロー ============ -->
+<section class="hero">
+  <!-- 横長の光リボン (左→右 へ流れる) -->
+  <div class="flow-ribbons" aria-hidden="true">
+    <span class="flow-ribbon r1"></span>
+    <span class="flow-ribbon r2"></span>
+    <span class="flow-ribbon r3"></span>
+    <span class="flow-ribbon r4"></span>
+  </div>
+  <!-- ささささっ! 細い速い線 (5本に厳選) -->
+  <div class="dash-lines" aria-hidden="true">
+    <span class="dash thick" style="top:14%; width:42%; animation-duration:3.1s; animation-delay:1.2s;"></span>
+    <span class="dash"       style="top:31%; width:48%; animation-duration:2.7s; animation-delay:2.1s;"></span>
+    <span class="dash"       style="top:51%; width:32%; animation-duration:2.2s; animation-delay:0.7s;"></span>
+    <span class="dash thick" style="top:69%; width:30%; animation-duration:2.0s; animation-delay:2.5s;"></span>
+    <span class="dash"       style="top:88%; width:34%; animation-duration:2.5s; animation-delay:0.3s;"></span>
+  </div>
+  <!-- 6層の水の流れ -->
+  <div class="hero-waves" aria-hidden="true">
+    <svg class="wave-svg layer-top" viewBox="0 0 2880 60" preserveAspectRatio="none">
+      <path d="M0,30 C240,10 480,50 720,30 C960,10 1200,50 1440,30 C1680,10 1920,50 2160,30 C2400,10 2640,50 2880,30 L2880,60 L0,60 Z"/>
+    </svg>
+    <svg class="wave-svg layer-mid" viewBox="0 0 2880 100" preserveAspectRatio="none">
+      <path d="M0,50 C240,20 480,80 720,50 C960,20 1200,80 1440,50 C1680,20 1920,80 2160,50 C2400,20 2640,80 2880,50 L2880,100 L0,100 Z"/>
+    </svg>
+    <svg class="wave-svg layer-back" viewBox="0 0 2880 320" preserveAspectRatio="none">
+      <path d="M0,160 C320,80 640,240 960,160 C1280,80 1600,240 1920,160 C2240,80 2560,240 2880,160 L2880,320 L0,320 Z"/>
+    </svg>
+    <svg class="wave-svg layer-1" viewBox="0 0 2880 280" preserveAspectRatio="none">
+      <path d="M0,140 C320,60 640,220 960,140 C1280,60 1600,220 1920,140 C2240,60 2560,220 2880,140 L2880,280 L0,280 Z"/>
+    </svg>
+    <svg class="wave-svg layer-2" viewBox="0 0 2880 240" preserveAspectRatio="none">
+      <path d="M0,120 C320,50 640,190 960,120 C1280,50 1600,190 1920,120 C2240,50 2560,190 2880,120 L2880,240 L0,240 Z"/>
+    </svg>
+    <svg class="wave-svg layer-3" viewBox="0 0 2880 200" preserveAspectRatio="none">
+      <path d="M0,100 C320,40 640,160 960,100 C1280,40 1600,160 1920,100 C2240,40 2560,160 2880,100 L2880,200 L0,200 Z"/>
+    </svg>
+  </div>
+  <!-- 流れる光のライン (キャッシュフロー風) -->
+  <div class="flow-lines" aria-hidden="true">
+    <span class="flow-line" style="top:18%; animation-duration:7s; animation-delay:0s;"></span>
+    <span class="flow-line thick" style="top:32%; animation-duration:9s; animation-delay:1.8s;"></span>
+    <span class="flow-line" style="top:48%; animation-duration:6s; animation-delay:3.4s;"></span>
+    <span class="flow-line" style="top:62%; animation-duration:8s; animation-delay:0.9s;"></span>
+    <span class="flow-line thick" style="top:75%; animation-duration:10s; animation-delay:4.7s;"></span>
+    <span class="flow-line" style="top:85%; animation-duration:5s; animation-delay:2.3s;"></span>
+  </div>
+  <!-- キラキラ光の粒 (強化版) -->
+  <div class="hero-sparkles" aria-hidden="true">
+    <span class="sparkle" style="left:6%;  animation-delay:0s;"></span>
+    <span class="sparkle" style="left:14%; animation-delay:1.5s; width:3px; height:3px;"></span>
+    <span class="sparkle" style="left:22%; animation-delay:3.2s;"></span>
+    <span class="sparkle" style="left:30%; animation-delay:0.8s; width:5px; height:5px;"></span>
+    <span class="sparkle" style="left:38%; animation-delay:4.1s;"></span>
+    <span class="sparkle" style="left:46%; animation-delay:2.3s; width:3px; height:3px;"></span>
+    <span class="sparkle" style="left:54%; animation-delay:5.5s;"></span>
+    <span class="sparkle" style="left:62%; animation-delay:1.2s; width:5px; height:5px;"></span>
+    <span class="sparkle" style="left:70%; animation-delay:3.8s;"></span>
+    <span class="sparkle" style="left:78%; animation-delay:0.5s; width:3px; height:3px;"></span>
+    <span class="sparkle" style="left:86%; animation-delay:4.7s;"></span>
+    <span class="sparkle" style="left:94%; animation-delay:2.9s; width:4px; height:4px;"></span>
+  </div>
+  <div class="container-narrow">
+    <div class="hero-en">FLOW</div>
+    <h1 class="hero-jp">お金の流れを、止めない。</h1>
+    <p class="hero-lead">
+      中小企業の資金繰り・銀行交渉・補助金活用を、<br>
+      <strong>即動いて、即返して、即決める。</strong><br><br>
+      私たちは、会計士でも銀行でも、財務コンサルでもありません。<br>
+      同じ中小企業の経営者として、<br>
+      お金の流れを、隣で一緒に作ります。<br><br>
+      <strong>1時間以内に折り返します。</strong>
+    </p>
+    <div class="cta-group">
+      <a href="tel:09055049678" class="cta-btn" aria-label="電話する">📞 電話する</a>
+      <a href="https://line.works/REPLACE_WITH_REAL_URL" class="cta-btn" target="_blank" rel="noopener">💬 LINEで送る</a>
+      <a href="apply/" class="cta-btn primary">✉️ ヒアリングを申込 →</a>
+    </div>
+    <p class="cta-note">※ <strong>すべて無料</strong>です / <strong>1時間以内に折り返し</strong> / 全国対応 / 24時間受付</p>
+  </div>
+</section>
+
+<!-- ============ ② 共感 / 論点リスト ============ -->
+<section class="points-section">
+  <div class="container-narrow">
+    <div class="section-label">FOR LEADERS</div>
+    <h2 class="section-title">次の打ち手、決まっていますか?</h2>
+    <p class="section-lead">
+      会社は前に進んでいる。<br>
+      けれど、お金まわりの<strong>論点が片付いていない</strong> ── そんな経営者と、私たちはお話ししています。
+    </p>
+    <ul class="points-list">
+      <li>銀行への次の一手 (追加融資 / 借換 / リスケ / プロパー化)</li>
+      <li>来期の資金計画の組み方と、社内への落とし込み</li>
+      <li>補助金・助成金の戦略的な活用方法</li>
+      <li>代表交代後の、金融機関リレーション再構築</li>
+      <li>月次キャッシュフローの見える化と、経営判断への直結</li>
+      <li>顧問税理士・会計士を超えた、お金の戦略整理</li>
+      <li>大口取引先依存からの、キャッシュ構造組み替え</li>
+      <li>銀行格付け改善に向けた、財務指標の整え方</li>
+      <li>事業再構築・新規投資に向けた、資金調達設計</li>
+      <li>数字を、社長の意思決定に直結させる仕組み化</li>
+    </ul>
+    <p class="points-cta">
+      どれか1つでも「決まっていない」項目があれば、<br>
+      <strong>次の一手を、一緒に決めましょう。</strong><br>
+      <span style="color:var(--text-soft); font-size:15px; font-weight:400;">3営業日以内に最初の方向性をお持ちします。</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ ③ 数字で見るBEYOND ============ -->
+<section>
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 56px;">
+      <div class="section-label">ABOUT BEYOND HOLDINGS</div>
+      <h2 class="section-title">数字で見る、BEYOND Holdings</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num" data-target="7" data-suffix="">0</div>
+        <div class="stat-label">グループ会社数<br>(電力機器/物流/不動産/広告 等)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" data-target="85" data-suffix="">0</div>
+        <div class="stat-label">所属人数<br>(設立2年で1.8倍)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" data-target="2023" data-suffix="" data-start="2000">2000</div>
+        <div class="stat-label">設立年<br>東京都世田谷区</div>
+      </div>
+    </div>
+    <p class="section-lead" style="text-align:center; margin-bottom:0;">
+      私たちは "コンサル" ではありません。<br>
+      自分たち自身が複数の中小企業を経営し、<br>
+      資金繰り・銀行交渉・借入の組み替えを<strong>当事者として</strong>何度も繰り返してきた集まりです。<br>
+      机上の空論ではなく、実際にやってきたことだけをお渡しします。
+    </p>
+  </div>
+</section>
+
+<!-- ============ ④ 解き方 ============ -->
+<section style="background: var(--bg-soft);">
+  <div class="container-narrow">
+    <div class="section-label">WHAT WE DO</div>
+    <h2 class="section-title">私たちがやること、5つ。</h2>
+    <div class="solutions-list">
+
+      <div class="solution-card">
+        <div class="solution-num">01</div>
+        <div class="solution-body">
+          <h3>現状の見える化<span class="solution-period">1〜3週間</span></h3>
+          <p>試算表・借入一覧・キャッシュフロー・銀行別残高を一気に棚卸しし、「あと何ヶ月もつか」「打てる手はいくつあるか」を<strong>数字で確定</strong>させます。</p>
+          <p>もし試算表自体が整っていない、月次決算が遅れている場合は、<strong>数字を作るところから着手</strong>します。顧問の会計士・税理士のレスが悪い、戦略的に動いてくれないなど、お困りがあれば<strong>会計士・税理士の見直しも含めて</strong>ご相談に乗ります。提携先のご紹介も可能です。</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-num">02</div>
+        <div class="solution-body">
+          <h3>資金繰りシナリオの設計<span class="solution-period">2週間</span></h3>
+          <p>「お金をどう作るか」は、銀行借入だけではありません。<strong>既存銀行 / 新規銀行 / プロパー化 / 借換 / リスケ / 補助金 / 助成金 / 出資 / ファクタリング / 役員借入 / 手元現金の組み替え</strong> ── 取り得る選択肢を全部並べ、御社にとって最適な組み合わせと順序を設計します。</p>
+          <p>「銀行にお願いする」前に、<strong>そもそもの土俵</strong>を一緒に作るステップです。</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-num">03</div>
+        <div class="solution-body">
+          <h3>銀行交渉の伴走<span class="solution-period">随時</span></h3>
+          <p>02で決めたシナリオのうち、銀行交渉が必要な部分について、<strong>戦略設計・資料作成・同席</strong>まで一気通貫で並走します。</p>
+          <p>「どの銀行に、何を、どの順で話すか」「言うべきこと・言ってはいけないこと」を事前に握り、現場でも横にいます。</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-num">04</div>
+        <div class="solution-body">
+          <h3>補助金・助成金の戦略活用<span class="solution-period">常時</span></h3>
+          <p>事業再構築・ものづくり・小規模事業者持続化など、自社に効く制度だけを選定し、申請まで伴走します。</p>
+        </div>
+      </div>
+
+      <div class="solution-card">
+        <div class="solution-num">05</div>
+        <div class="solution-body">
+          <h3>月次キャッシュ管理の仕組み化<span class="solution-period">3ヶ月で定着</span></h3>
+          <p>資金繰り表を、社長が毎月10分で見れる状態に。これがあるだけで銀行からの評価が変わります。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑤ 事例 / よくいただくご相談 ============ -->
+<section class="case-section">
+  <div class="container-narrow">
+    <div class="section-label">CASES & CONSULTATIONS</div>
+    <h2 class="section-title">事例 / 現在のご相談</h2>
+
+    <h3 style="font-size:18px; font-weight:700; margin-bottom:20px;">▼ 実際にBEYONDが伴走した事例</h3>
+
+    <div class="case-card">
+      <div class="case-meta">事例 01</div>
+      <div class="case-title">製造業 / 年商1億 / 債務超過の状態での代表交代時の相談</div>
+      <p class="case-detail">
+        創業者から二代目への代表交代時。前代表時の借入数千万、毎月のキャッシュは持って2ヶ月。
+      </p>
+      <div class="case-result">
+        <strong style="display:block; margin-bottom:8px; color:var(--accent);">● What we did</strong>
+        → <strong>4ヶ月で</strong><br>
+        ・そもそもの<strong>代表交代時のリスク整理</strong><br>
+        ・最新BS/PLによる<strong>概算株価算定</strong><br>
+        ・代表引継ぎ後の<strong>経営方針の策定</strong><br>
+        ・<strong>BEYOND Holdingsとして参画できる部分</strong>の相談
+      </div>
+    </div>
+
+    <h3 style="font-size:18px; font-weight:700; margin: 48px 0 20px;">▼ 現在ご相談いただいている案件 (一部・匿名)</h3>
+
+    <div class="consulting-list">
+      <div class="consulting-item">
+        <p class="consulting-quote">「補助金を活用したいが、申請の経験がない。どの制度が自社に合うかも分からない。」</p>
+        <p class="consulting-meta">サービス業 / 年商1〜3億</p>
+      </div>
+      <div class="consulting-item">
+        <p class="consulting-quote">「税理士・社労士など士業との接点が、近くにない。誰に聞けばよいか分からない。」</p>
+        <p class="consulting-meta">建設業 / 年商3〜5億</p>
+      </div>
+      <div class="consulting-item">
+        <p class="consulting-quote">「キャッシュは回っているが、来期の資金計画をどう組むべきか整理したい。」</p>
+        <p class="consulting-meta">製造業 / 年商5億超</p>
+      </div>
+    </div>
+
+    <p style="margin-top:32px; font-size:14px; color:var(--text-soft); text-align:center;">
+      事例は今後、お客様の承諾範囲で随時追加していきます。
+    </p>
+  </div>
+</section>
+
+<!-- ============ ⑥ なぜBEYONDか ============ -->
+<section>
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 56px;">
+      <div class="section-label">WHY BEYOND</div>
+      <h2 class="section-title">なぜ、BEYONDなのか。</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">REASON 01</div>
+        <h3>当事者だから、机上の空論にならない</h3>
+        <p>BEYOND Holdingsは、自分たち自身が中小企業として銀行と向き合い、リスケも借換も補助金もやってきました。やったことだけお渡しします。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">REASON 02</div>
+        <h3>スピードが、覚悟の証明</h3>
+        <p>お問い合わせから<strong>1時間以内に折り返し</strong>。初回ヒアリングは原則<strong>3営業日以内</strong>。資金繰りは時間との戦いです。考えるより先に、動きます。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">REASON 03</div>
+        <h3>一度組んだら、一生仲間</h3>
+        <p>私たちは "プロジェクト終了" を区切りとしません。お付き合いが始まったら、その後何年経っても、いつでも電話してください。</p>
+      </div>
+    </div>
+
+    <table class="speed-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>一般的なコンサル/税理士</th>
+          <th>BEYOND</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>折り返し</td>
+          <td>翌営業日〜数日</td>
+          <td>1時間以内</td>
+        </tr>
+        <tr>
+          <td>初回ヒアリング</td>
+          <td>2-3週間後</td>
+          <td>3営業日以内</td>
+        </tr>
+        <tr>
+          <td>最初の打ち手</td>
+          <td>1-2ヶ月後</td>
+          <td>2週間以内</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ ⑦ 料金 ============ -->
+<section class="pricing-section">
+  <div class="container-narrow">
+    <div class="section-label" style="color:var(--gold);">PRICING</div>
+    <h2 class="section-title">料金について</h2>
+    <p class="section-lead" style="color:rgba(255,255,255,0.85);">
+      料金表は、あえて掲載していません。<br>
+      一件一件、本気で組むからです。
+    </p>
+
+    <div class="pricing-block">
+      <span class="pricing-label">STEP 01</span>
+      <h3 class="pricing-headline">ヒアリングまでは、無料です。</h3>
+      <p class="pricing-detail">
+        ただし、これは "相談" ではありません。<br>
+        私たちBEYOND Holdingsが、あなたの会社で<strong>「何ができるか」</strong>を、一緒に見極めるための時間です。<br><br>
+        横に並んで、一緒に頑張れるか。<br>
+        お互いに、見極めましょう。
+      </p>
+    </div>
+
+    <div class="pricing-block">
+      <span class="pricing-label">STEP 02</span>
+      <h3 class="pricing-headline">Kickoff(本契約)から、有料となります。</h3>
+      <p class="pricing-detail">
+        ここはぶらしません。本気で組む以上、対価をいただきます。<br><br>
+        過去の事例では、<strong>月額 数十万〜数百万円のレンジ</strong>で、案件ごとに設計してきました。<br>
+        <strong>月額 / 成功報酬 / 出来高</strong> の組み合わせも可能です。<br><br>
+        短期・部分関与の<strong>トライアル契約</strong>も、状況に応じて設計します。
+      </p>
+    </div>
+
+    <div class="pricing-block">
+      <span class="pricing-label">IF NOT FIT</span>
+      <h3 class="pricing-headline">お役に立てないと判断した場合</h3>
+      <p class="pricing-detail">
+        正直に、お伝えします。<br><br>
+        その場合でも、ヒアリングでお話しした内容(数字の見方・打ち手の方向性)は、<strong>必ず持ち帰っていただけます。</strong> 私たちと組まなくても、次の一手を進められる状態にしてお返しします。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑧ 私たちのスタンス ============ -->
+<section class="message-section">
+  <div class="container-narrow">
+    <div class="section-label">OUR STANCE</div>
+    <h2 class="section-title">私たちのスタンス。</h2>
+    <div class="stance-text">
+      <p>中小企業のお金の流れは、<strong>待ってくれません。</strong></p>
+      <p>銀行に断られた翌日、補助金の締切1週間前、月末の支払いの前日。<br>その瞬間に、即動ける相手が必要だと、私たちは考えています。</p>
+      <p>私たちは "コンサル" ではありません。<br>BEYOND Holdings として、自分たち自身が複数の中小企業を経営しながら、資金繰り・銀行交渉・補助金活用を、<strong>当事者として何度もくぐってきました。</strong></p>
+      <p>机上の空論ではなく、<br>実際にやってきたことだけを、お渡しします。</p>
+      <p>一緒に、お金の流れを止めない経営へ。</p>
+      <p class="stance-signature">BEYOND Holdings 株式会社</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑨ こんな会社とは組みません ============ -->
+<section class="filter-section">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:56px;">
+      <div class="section-label">WHO WE WORK WITH</div>
+      <h2 class="section-title">私たちが、組むのはこんな経営者です。</h2>
+    </div>
+    <div class="filter-grid">
+      <div class="filter-block good">
+        <h3>こんな経営者と組みたい</h3>
+        <ul class="filter-list">
+          <li>数字から、目を逸らさない経営者</li>
+          <li>動くと決めたら、すぐ動ける経営者</li>
+          <li>失敗を、次の糧にできる経営者</li>
+          <li>「自分も変わる」と腹を括れる経営者</li>
+          <li>中小企業同士、横で並走できる経営者</li>
+        </ul>
+      </div>
+      <div class="filter-block bad">
+        <h3>お断りしています</h3>
+        <ul class="filter-list">
+          <li>楽して結果だけ欲しい</li>
+          <li>無料・値引きの話から入る</li>
+          <li>意思決定者が打ち合わせに出ない</li>
+          <li>「他社はもっとやってくれた」と比較ばかりする</li>
+          <li>丸投げ前提で動く</li>
+          <li>数字を出したがらない</li>
+          <li>決めることを先延ばしにする</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑩ FAQ ============ -->
+<section>
+  <div class="container-narrow">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q">どのくらいの規模の会社が対象ですか?</div>
+        <div class="faq-a">年商1億〜30億規模の中小企業が中心ですが、緊急度の高い案件は規模問わず対応します。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">最短でいつから動けますか?</div>
+        <div class="faq-a">お問い合わせから1時間以内に折り返し、3営業日以内に初回ヒアリング、その2週間後には最初の打ち手を動かします。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">顧問税理士・社労士がいますが大丈夫ですか?</div>
+        <div class="faq-a">全く問題ありません。既存の専門家と連携して動きます。彼らの代わりをするのではなく、戦略面と実働面を補います。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">途中で合わないと感じたらやめられますか?</div>
+        <div class="faq-a">契約形態によりますが、基本的に解約条件は柔軟に設計します。むしろ、初回ヒアリングで合わなければ、こちらからお断りすることもあります。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">業種に得意・不得意はありますか?</div>
+        <div class="faq-a">製造業・建設業・物流・サービス業・小売など幅広く対応していますが、金融商品の販売など特殊業種はお断りすることがあります。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">全国対応していますか?</div>
+        <div class="faq-a">はい。オンライン中心ですが、必要に応じて全国どこへでも訪問します。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">料金の目安は本当に教えてもらえないのですか?</div>
+        <div class="faq-a">ヒアリング後、明確にご提示します。事前の電話・LINEで「ざっくりレンジ感」をお伝えすることも可能です。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑪ 大CTA再掲 ============ -->
+<section class="final-cta" id="cta">
+  <div class="container-narrow">
+    <h2 class="final-cta-title">
+      <span class="cta-line">まず、話しましょう。</span>
+      <span class="cta-line">合うか合わないかは、それから決めましょう。</span>
+    </h2>
+    <p class="final-cta-sub">合うと分かったら、一生、仲間。</p>
+    <div class="cta-group">
+      <a href="tel:09055049678" class="cta-btn" aria-label="電話する">📞 電話する</a>
+      <a href="https://line.works/REPLACE_WITH_REAL_URL" class="cta-btn" target="_blank" rel="noopener">💬 LINEで送る</a>
+      <a href="apply/" class="cta-btn primary">✉️ ヒアリングを申込</a>
+    </div>
+    <p class="cta-note"><strong>1時間以内に折り返します</strong> / 全て無料 / 全国対応 / 24時間受付</p>
+  </div>
+</section>
+
+<!-- ============ フッター ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">BEYOND FLOW</div>
+        <p>お金の流れを、止めない。<br>中小企業の資金繰り・銀行交渉・補助金活用に、即動く伴走サービス。<br>BEYOND Holdings 株式会社が運営する、BEYOND Playbook の一部です。</p>
+      </div>
+      <div class="footer-col">
+        <h4>BEYOND PLAYBOOK</h4>
+        <ul>
+          <li><a href="https://playbook.beyond-holdings.co.jp/">ハブサイト</a></li>
+          <li><a href="#">他のサービス一覧</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>運営会社</h4>
+        <ul>
+          <li><a href="https://www.beyond-holdings.co.jp/">BEYOND Holdings</a></li>
+          <li><a href="#">プライバシーポリシー</a></li>
+          <li><a href="#">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 BEYOND Holdings 株式会社</div>
+      <div>東京都世田谷区尾山台 / TEL: 03-6820-9321</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ フローティングCTA (モバイル) ============ -->
+<div class="float-cta">
+  <a href="tel:09055049678" aria-label="電話する">📞 電話</a>
+  <a href="https://line.works/REPLACE_WITH_REAL_URL" target="_blank" rel="noopener">💬 LINE</a>
+  <a href="apply/">✉️ 申込</a>
+</div>
+
+<script>
+/* ============ 数字カウントアップ ============ */
+const animateCounter = (el) => {
+  const target = parseInt(el.dataset.target, 10);
+  const start = parseInt(el.dataset.start || '0', 10);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const startTime = performance.now();
+  const tick = (now) => {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+    const current = Math.round(start + (target - start) * eased);
+    el.textContent = current + suffix;
+    if (progress < 1) requestAnimationFrame(tick);
+    else el.textContent = target + suffix;
+  };
+  requestAnimationFrame(tick);
+};
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounter(entry.target);
+      counterObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObs.observe(el));
+
+/* ============ スクロールフェードイン ============ */
+const fadeTargets = [
+  'section .section-title',
+  'section .section-lead',
+  'section .points-list',
+  'section .points-cta',
+  '.stats-grid > *',
+  '.solution-card',
+  '.case-card',
+  '.consulting-item',
+  '.why-card',
+  '.speed-table',
+  '.pricing-block',
+  '.message-block',
+  '.filter-block',
+  '.faq-item',
+  '.final-cta-title',
+  '.final-cta-sub',
+  '.final-cta .cta-group',
+];
+let fadeIndex = 0;
+document.querySelectorAll(fadeTargets.join(',')).forEach((el) => {
+  el.classList.add('fade-in');
+});
+const fadeObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), 60);
+      fadeObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
+
+/* ============ ヒーロー要素の初期演出 ============ */
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
+</script>
+</body>
+</html>
