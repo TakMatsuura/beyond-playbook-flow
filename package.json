@@ -1,0 +1,9 @@
+{
+  "name": "beyond-playbook-flow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FLOW - お金の流れを、止めない。 (BEYOND Playbook 第1サイト)",
+  "dependencies": {
+    "jose": "^5.9.6"
+  }
+}
