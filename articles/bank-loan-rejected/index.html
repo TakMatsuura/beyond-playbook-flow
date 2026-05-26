@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="銀行に追加融資を断られた直後、多くの社長がやりがちな3つの間違いと、72時間で取るべき正しい3つの行動を、中小企業の実例とともに解説します。BEYOND Holdingsの財務伴走サービスFLOWより。">
-<meta name="keywords" content="銀行 融資 断られた,追加融資 断られた,中小企業 融資 断られた,リスケ,融資 NG,銀行交渉">
-<meta property="og:title" content="「銀行に追加融資を断られた」その時、社長が最初に取るべき3つの行動｜FLOW">
-<meta property="og:description" content="断られた直後の72時間で取るべき正しいアクション。BEYOND伴走の実例と合わせて解説。">
+<meta name="description" content="銀行に追加融資を断られた直後、社長が最初に見るべきは「他の銀行」ではありません。BS/PLから事業構造を客観評価し、立て直しの軸を作る ── BEYOND Holdingsの伴走思想を解説。">
+<meta name="keywords" content="銀行 融資 断られた,追加融資 断られた,中小企業 資金繰り,事業構造 見直し,立て直し,財務改善">
+<meta property="og:title" content="「銀行に追加融資を断られた」の前後で、社長が本当に見るべき3つのこと｜FLOW">
+<meta property="og:description" content="銀行に断られた時こそ、BS/PLから事業の構造を見直すチャンス。立て直しの軸を客観的に作り、実働まで落とす。BEYONDの伴走思想。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://flow.beyond-holdings.co.jp/articles/bank-loan-rejected/">
-<title>「銀行に追加融資を断られた」その時、社長が最初に取るべき3つの行動｜FLOW</title>
+<title>「銀行に追加融資を断られた」の前後で、社長が本当に見るべき3つのこと｜FLOW</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23060b1a'/><stop offset='1' stop-color='%230a1e3d'/></linearGradient></defs><rect width='100' height='100' rx='18' fill='url(%23g)'/><text x='50' y='80' font-family='Inter,Arial,sans-serif' font-weight='900' font-size='92' fill='%23f5c542' text-anchor='middle' letter-spacing='-2'>F</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +32,6 @@ body {
 }
 a { color: var(--accent); text-decoration: underline; }
 
-/* ヘッダー */
 header { background: #fff; border-bottom: 1px solid var(--line); }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
@@ -48,7 +47,6 @@ header { background: #fff; border-bottom: 1px solid var(--line); }
 .back-link { font-size: 13px; color: var(--text-soft); text-decoration: none; }
 .back-link:hover { color: var(--accent); }
 
-/* パンくず */
 .breadcrumb {
   max-width: 760px; margin: 24px auto 0; padding: 0 24px;
   font-size: 13px; color: var(--text-soft);
@@ -56,7 +54,6 @@ header { background: #fff; border-bottom: 1px solid var(--line); }
 .breadcrumb a { color: var(--text-soft); text-decoration: none; }
 .breadcrumb a:hover { color: var(--accent); }
 
-/* 記事本体 */
 article {
   max-width: 760px; margin: 0 auto; padding: 40px 24px 80px;
 }
@@ -87,14 +84,11 @@ article h3 {
   margin-top: 36px; margin-bottom: 16px;
   color: var(--accent);
 }
-article p {
-  margin-bottom: 20px; line-height: 1.95;
-}
+article p { margin-bottom: 20px; line-height: 1.95; }
 article p strong { color: var(--accent); font-weight: 700; }
 article ul, article ol { margin-bottom: 20px; padding-left: 24px; }
 article li { margin-bottom: 12px; line-height: 1.85; }
 
-/* 警告ボックス (NGリスト) */
 .ng-box {
   background: #fff5f5; border: 1px solid #e8b8b8;
   border-radius: 8px; padding: 24px 28px; margin: 24px 0;
@@ -107,7 +101,6 @@ article li { margin-bottom: 12px; line-height: 1.85; }
 .ng-box ul { margin: 0; padding-left: 20px; }
 .ng-box li { margin-bottom: 8px; }
 
-/* ハイライトボックス (正しい行動) */
 .do-box {
   background: #f5fbf6; border: 1px solid #b8d9c0;
   border-radius: 8px; padding: 24px 28px; margin: 24px 0;
@@ -118,7 +111,6 @@ article li { margin-bottom: 12px; line-height: 1.85; }
 }
 .do-box-title::before { content: '✅'; font-size: 18px; }
 
-/* 事例カード */
 .case-card {
   border: 1px solid var(--line); border-radius: 8px;
   padding: 28px 32px; background: #fff;
@@ -126,17 +118,16 @@ article li { margin-bottom: 12px; line-height: 1.85; }
 }
 .case-meta {
   display: inline-block; font-size: 11px; font-weight: 700;
-  padding: 4px 10px; background: var(--accent); color: #fff;
+  padding: 4px 10px; background: var(--gold-deep); color: #fff;
   border-radius: 4px; letter-spacing: 0.05em; margin-bottom: 12px;
 }
 .case-card h4 { font-size: 16px; font-weight: 800; margin-bottom: 12px; }
-.case-result {
+.case-step {
   background: var(--bg-soft); padding: 16px 20px; border-radius: 6px;
-  margin-top: 16px; font-weight: 700;
+  margin: 16px 0; line-height: 1.85;
 }
-.case-result strong { color: var(--accent); }
+.case-step strong { color: var(--accent); }
 
-/* CTAブロック */
 .cta-block {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
   color: #fff; padding: 48px 40px; border-radius: 12px;
@@ -170,7 +161,6 @@ article li { margin-bottom: 12px; line-height: 1.85; }
   background: #fff; color: var(--accent); border-color: #fff;
 }
 
-/* 関連記事 */
 .related {
   margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--line);
 }
@@ -188,7 +178,6 @@ article li { margin-bottom: 12px; line-height: 1.85; }
 .related a:hover { background: #ecebe5; transform: translateX(4px); }
 .related a::after { content: ' →'; color: var(--gold); }
 
-/* フッター */
 footer {
   background: #0a0e1a; color: rgba(255,255,255,0.7);
   padding: 48px 24px 32px; font-size: 13px;
@@ -223,137 +212,147 @@ footer a:hover { color: var(--gold-bright); }
 </header>
 
 <nav class="breadcrumb">
-  <a href="../../">FLOW</a> &nbsp;/&nbsp; <a href="../">記事一覧</a> &nbsp;/&nbsp; 銀行に追加融資を断られた時の3つの行動
+  <a href="../../">FLOW</a> &nbsp;/&nbsp; <a href="../">記事一覧</a> &nbsp;/&nbsp; 銀行に追加融資を断られた前後で見るべき3つのこと
 </nav>
 
 <article>
 
   <div class="article-meta">FINANCIAL COLUMN · 2026.05.26</div>
 
-  <h1>「銀行に追加融資を断られた」その時、社長が最初に取るべき3つの行動</h1>
+  <h1>「銀行に追加融資を断られた」の前後で、社長が本当に見るべき3つのこと</h1>
 
   <div class="article-lead">
-    銀行から融資を断られた瞬間、<strong>多くの社長がやりがちな3つの間違い</strong>があります。<br>
-    本記事では、断られた直後の<strong>72時間で取るべき正しい行動</strong>を、実際にBEYOND Holdingsが伴走した中小企業の事例とともに解説します。<br>
-    「次にどう動けばいいか分からない」と立ち止まっている経営者に、明日から動ける手順をお渡しします。
+    銀行に追加融資を断られた直後、多くの社長は<strong>「次の銀行を回る」「経費削減を始める」</strong>と、銀行視点・対症療法に動こうとします。<br>
+    でも本当に必要なのは、その前に立ち止まり、<strong>自社のBSとPLから事業の構造を客観的に見直す</strong>ことです。<br>
+    本記事では、BEYOND Holdingsが伴走するなら<strong>こう動く</strong>、という3ステップを解説します。
   </div>
 
-  <h2>1. 断られた直後にやりがちな3つの間違い</h2>
+  <h2>1. 銀行に断られた時、よくある3つのNGアクション</h2>
 
-  <p>融資を断られた直後、経営者の頭は焦りで一杯になります。その焦りが、<strong>次の融資の可能性をさらに下げる行動</strong>を引き起こすことが少なくありません。</p>
+  <p>融資を断られた直後、経営者の頭は焦りで一杯になります。その焦りが、<strong>本質から目を逸らす行動</strong>を引き起こすことが少なくありません。</p>
 
   <div class="ng-box">
     <div class="ng-box-title">よくあるNG行動</div>
     <ul>
-      <li><strong>NG①</strong>: 他の銀行をすぐ回って同じ申請を出す</li>
-      <li><strong>NG②</strong>: とりあえず顧問税理士・会計士に相談する</li>
-      <li><strong>NG③</strong>: いきなり経費削減・人員見直しに走る</li>
+      <li><strong>NG①</strong>: 銀行視点(=資金を増やす)だけで次の動きを決める</li>
+      <li><strong>NG②</strong>: BS/PLを見ずに、別の銀行へ同じ申請を出す</li>
+      <li><strong>NG③</strong>: いきなり対症療法 (経費削減・人員見直し) に走る</li>
     </ul>
   </div>
 
-  <h3>NG① なぜ「他行をすぐ回る」のがNGか</h3>
+  <h3>NG① 「資金を増やす」だけ考えてしまう</h3>
 
-  <p>断られた事実は、信用情報に残らないものの、<strong>銀行間の暗黙の情報共有</strong>はある程度存在します。とくに地域の地銀同士・信金同士では、同じエリアの担当者は顔見知りであることが多く、「あの会社が複数行で同時に動いている」という情報が共有されることがあります。</p>
+  <p>「銀行に断られた=資金を増やす方法を探す」 と短絡的に考えると、視野が一気に狭まります。本当の問題は<strong>「なぜ資金が足りなくなったか」</strong>であり、 ★その答えは資金面ではなく事業構造の中に★ あるケースがほとんどです。</p>
 
-  <p>そして何より、<strong>断られた原因が解消されないまま申請しても、結果は同じ</strong>です。次の銀行も同じ財務諸表を見て、同じ判断をするだけ。たとえば、自己資本比率の低さや、債務超過の懸念、業績悪化トレンドといった構造的な問題は、銀行を変えても解決しません。</p>
+  <p>たとえば、利益率が業界平均より低い・特定顧客への売上依存が高い・在庫が膨らみすぎている、といった構造的な要因は、借入をしても根本解決しません。むしろ借入で延命するほど、構造問題が表面化しないまま膨らんでいきます。</p>
 
-  <h3>NG② なぜ「顧問税理士・会計士に相談」がNGか</h3>
+  <h3>NG② BS/PLを見ずに、別の銀行へ同じ申請を出す</h3>
 
-  <p>もちろん相談自体は無駄ではありません。ただし、<strong>顧問税理士・会計士の多くは「税務」のプロであって、「銀行交渉」のプロではありません</strong>。彼らから返ってくる回答は、たいてい「決算書を整える」「節税の見直し」といった、銀行交渉のスピード感とは違う方向のアドバイスになりがちです。</p>
+  <p>断られた事実そのものは信用情報に残らないものの、<strong>断られた原因が解消されていない状態</strong>で別の銀行に同じ申請を出しても、結果はほぼ同じです。次の銀行も同じ財務諸表を見て、同じ判断をします。</p>
 
-  <p>本当に必要なのは、<strong>銀行員がこの会社をどう評価しているか</strong>を読み解き、その評価を変える戦略を持っている人の助言です。</p>
+  <p>動く前に、まずは自社のBS/PLを「銀行員の視点」と「経営者自身の視点」の両方で読み直すことが先です。</p>
 
-  <h3>NG③ なぜ「いきなり経費削減」がNGか</h3>
+  <h3>NG③ いきなり経費削減・人員見直しに走る</h3>
 
   <p>経費削減・人員見直しは、<strong>時間がかかる打ち手</strong>です。効果が決算に反映されるのは早くて半年後。一方で、目の前のキャッシュ枯渇は3ヶ月後に迫っていることが多く、時間軸が合いません。</p>
 
-  <p>さらに悪いのは、人員見直しの噂が社内外に漏れて、<strong>取引先からの信用がさらに低下</strong>することです。融資が受けにくい状態に追い打ちがかかります。</p>
+  <p>さらに、構造分析をせずに削減すると<strong>「削るべきでないコストを削ってしまう」</strong>リスクが高くなります。たとえば、利益を生んでいる事業ラインへの投資まで止めてしまうと、回復の芽を自ら摘むことになります。</p>
 
-  <h2>2. 断られた直後72時間で取るべき、正しい3つの行動</h2>
+  <h2>2. BEYONDが伴走するなら、こう動く ── 3ステップ</h2>
 
-  <p>では、何をすべきか。順序が大事です。</p>
+  <p>BEYONDは銀行交渉のプロではありません。
+  ただ、<strong>同じ中小企業の経営者として、BS/PLから事業構造を一緒に見直し、立て直しの軸を客観的に作り、実働まで落とす</strong>ことができます。</p>
+
+  <p>私たちが伴走するなら、この順番です。</p>
 
   <div class="do-box">
-    <div class="do-box-title">正しい3アクション</div>
+    <div class="do-box-title">BEYONDの3ステップ</div>
     <ol>
-      <li><strong>アクション①</strong>: 断られた「本当の理由」を聞き出す</li>
-      <li><strong>アクション②</strong>: 自社の財務指標を「銀行視点」で再評価する</li>
-      <li><strong>アクション③</strong>: 次の3手を「順番」と「時間軸」で設計する</li>
+      <li><strong>ステップ①</strong>: 数字を作る・見える化する</li>
+      <li><strong>ステップ②</strong>: BS/PLから事業の構造を客観評価する</li>
+      <li><strong>ステップ③</strong>: 立て直しの軸を決め、実働と銀行への提案文を組み立てる</li>
     </ol>
   </div>
 
-  <h3>アクション① 断られた「本当の理由」を聞き出す</h3>
+  <h3>ステップ① 数字を作る・見える化する</h3>
 
-  <p>銀行員は基本的に、断る理由をハッキリ言ってくれません。「総合的判断で」「本部の判断で」といった曖昧な表現で終わります。これは、断る理由を明示すると、その後のクレームや交渉が長引くからです。</p>
+  <p>そもそも試算表が整っていない・月次決算が3ヶ月遅れている・現預金残高すら週単位で把握できていない ── こうしたケースは中小企業では珍しくありません。</p>
 
-  <p>しかし、本当の理由が分からないと、次の対策が打てません。聞き出すための切り口は3つあります。</p>
+  <p>BEYONDが入る場合、まずは<strong>数字を作るところから着手</strong>します。顧問の会計士・税理士のレスが悪い、戦略的に動いてくれない場合は、会計士・税理士の見直しも含めてご相談に乗ります。提携先のご紹介も可能です。</p>
 
-  <ul>
-    <li><strong>「次の決算で何を改善すれば、再申請の可能性がありますか?」</strong> と未来形で聞く</li>
-    <li><strong>「他行から借りる場合、どの指標がネックになりそうですか?」</strong> と第三者視点で聞く</li>
-    <li><strong>「同業他社で似た規模の会社の融資はどうしていますか?」</strong> と相場感を聞く</li>
-  </ul>
+  <p>「数字が見える状態」 を作らない限り、次の判断は何もできません。ここを最初の1〜3週間で必ず固めます。</p>
 
-  <p>これらの聞き方なら、銀行員は答えやすくなります。本当のNG理由が見えてくれば、次に打つべき手が決まります。</p>
+  <h3>ステップ② BS/PLから事業の構造を客観評価する</h3>
 
-  <h3>アクション② 自社の財務指標を「銀行視点」で再評価する</h3>
+  <p>整った数字を、<strong>第三者の目で読み直します</strong>。自分で見ていると当たり前に思える数字も、外から見ると違和感がある、というのはよくあることです。</p>
 
-  <p>銀行は、決算書を独自の指標で評価しています。代表的なのは以下です。</p>
+  <p>具体的に見るのは、たとえば以下のような視点です。</p>
 
   <ul>
-    <li><strong>債務償還年数</strong>(借入総額 ÷ キャッシュフロー) ── 10年以下が目安</li>
-    <li><strong>自己資本比率</strong> ── 中小企業で20%以上が「安全圏」</li>
-    <li><strong>有利子負債依存度</strong>(借入総額 ÷ 売上高)── 業種により異なるが目安あり</li>
-    <li><strong>営業利益率</strong>のトレンド ── 単月ではなく3年推移</li>
-    <li><strong>債務超過の有無</strong> ── あれば最重要懸念</li>
+    <li><strong>売上の構造</strong>: 顧客集中度 / 商品ミックス / 単価×数量の推移</li>
+    <li><strong>利益の構造</strong>: 粗利率の業種平均との比較 / 固定費の重さ / 営業利益率のトレンド</li>
+    <li><strong>資産の構造</strong>: 在庫の質と量 / 売掛金の回収サイト / 遊休資産の有無</li>
+    <li><strong>負債の構造</strong>: 借入の総量と金利 / 償還年数 / 流動・固定のバランス</li>
+    <li><strong>キャッシュフローの構造</strong>: 営業CFが安定的に黒字か / 投資CFと財務CFの整合性</li>
   </ul>
 
-  <p>これらを「自社の現状値」で計算してみると、銀行が「断った理由」がほぼ見えてきます。<strong>どの指標が、どの基準を下回っているか</strong>を特定することが、次の交渉戦略の出発点です。</p>
+  <p>ここで多くの場合、 ★「実は銀行に断られた理由は、ここにあったのか」★ という気付きが出ます。本当に問題なのは資金繰りではなく、その奥にある事業構造の歪みです。</p>
 
-  <h3>アクション③ 次の3手を「順番」と「時間軸」で設計する</h3>
+  <h3>ステップ③ 立て直しの軸を決め、実働と銀行への提案文を組み立てる</h3>
 
-  <p>銀行融資の選択肢は、実は1つではありません。順序を変えるだけで、結果が大きく変わります。</p>
+  <p>構造が見えたら、 ★何を直すか★ を決めます。打ち手は事業によって全く違います。たとえば:</p>
 
   <ul>
-    <li><strong>短期(1ヶ月以内)</strong>: 既存銀行へ「条件変更(リスケ)」の打診 / 補助金・助成金の申請準備</li>
-    <li><strong>中期(2-3ヶ月)</strong>: 他行への新規借入(プロパー)申請 / 借換による金利・期間の組み替え</li>
-    <li><strong>長期(3-6ヶ月)</strong>: 信用保証協会枠の活用 / 制度融資(自治体)の検討</li>
+    <li>顧客集中度が高い → 新規顧客開拓に時間と人を投じる</li>
+    <li>粗利率が低い → 値上げ交渉 or 単価の高い顧客層へシフト</li>
+    <li>固定費が重い → 撤退判断 or オペレーション再設計</li>
+    <li>在庫が多い → 仕入れ方の見直し or 不良在庫の処理</li>
   </ul>
 
-  <p>重要なのは、これらを<strong>「どの順番で・いつまでに動くか」</strong>を、紙1枚で見える化することです。「いつかやる」では資金繰りは間に合いません。</p>
+  <p>そして、<strong>その打ち手を実働まで落とし込みます</strong>。「計画書を書いて終わり」ではなく、 ★誰が・いつまでに・何をやるか★ を決め、必要なら BEYONDが手を動かします。</p>
 
-  <h2>3. 実際の事例: 製造業/年商3億 / 3行目で融資実行</h2>
+  <p>その上で、銀行に対しても伝えるべきことが見えてきます。 ★「数字だけ見ても伝わらない事業構造の話と、具体的な立て直しシナリオ」★ を、銀行員にも理解できる言葉で組み立てて、一緒に持っていきます。 ここは「銀行交渉のテクニック」ではなく、<strong>「事業を立て直す本気度」 を数字と構造で見せる作業</strong>です。</p>
+
+  <h2>3. BEYONDなら、こう動く (想定事例)</h2>
+
+  <p>※ 以下はBEYONDが実際に伴走するときの動き方を、想定事例としてお見せするものです。</p>
 
   <div class="case-card">
-    <div class="case-meta">CASE STUDY</div>
-    <h4>製造業 / 年商3億 / 2行に断られた後、3行目で実行</h4>
-    <p><strong>状況</strong>: メインバンクと2行目の地銀から立て続けに追加融資を断られた製造業社。代表交代直後で、前代表時の借入が重く、月次キャッシュは2ヶ月分まで減少。社内では「もう打つ手がない」というムードが広がっていた。</p>
-    <p><strong>BEYONDの動き</strong>:</p>
-    <ul>
-      <li>断られた本当の理由を、銀行員と再面談して特定 → 債務償還年数が11年で、銀行の基準10年を超えていた</li>
-      <li>キャッシュフロー改善の現実的なシナリオを2案作成 (経費再構成 + リスケ条件交渉)</li>
-      <li>3行目(別エリアの信金) への融資申請を、改善計画書とセットで提出</li>
-    </ul>
-    <div class="case-result">
-      → <strong>結果</strong>: 申請から4週間で<strong>3行目で融資実行</strong>。並行して既存2行とリスケ合意、補助金<strong>採択</strong>。月次キャッシュフロー黒字化まで4ヶ月。
+    <div class="case-meta">SIMULATION</div>
+    <h4>製造業 / 年商3億 / 銀行に追加融資を断られた直後</h4>
+    <p>創業者から二代目への代表交代直後。前代表時の借入が重く、月次キャッシュは2ヶ月分まで減少。銀行に追加融資を相談したが、断られた。</p>
+
+    <div class="case-step">
+      <strong>ステップ①</strong>: 試算表が4ヶ月遅れていることが判明。最新月次まで一気に作り直し、現状把握できる状態にする。あわせて、現預金・借入・売掛・在庫の週次変動を「社長が10分で読める表」にまとめる。
+    </div>
+    <div class="case-step">
+      <strong>ステップ②</strong>: BS/PLを客観評価したところ、 ★売上の60%が1社の取引先に集中していた★ ことが判明。さらに、3年前から粗利率が業界平均より7ポイント低い状態が続いていた。 ★「資金不足は結果であって、本質的な原因は顧客集中と粗利率低下」★ と特定。
+    </div>
+    <div class="case-step">
+      <strong>ステップ③</strong>: 立て直しの軸を「12ヶ月で第2の主要顧客を作る + 粗利率3ポイント改善」 に設定。営業同行・価格交渉同席・新規開拓リスト作成まで BEYONDが手を動かす。並行して、構造改善計画書を銀行に提示し、「短期の追加融資」ではなく ★「中期のリスケ + 立て直し成果に応じた段階的支援」★ を提案。
+    </div>
+    <div class="case-step">
+      <strong>結果イメージ</strong>: 4ヶ月で月次キャッシュフロー黒字化 / 6ヶ月で第2顧客との契約成立 / 銀行からの信用も回復し、12ヶ月後に追加融資の道も開く。
     </div>
   </div>
 
-  <h2>4. BEYOND Holdings の解き方 (FLOWサービス)</h2>
+  <p>大事なのは、 ★銀行に行く前に、事業の本質を一緒に見ること★。それができれば、銀行はあとから動きます。</p>
 
-  <p>BEYOND Holdingsは、自分たち自身が中小企業を複数経営しながら、銀行交渉・リスケ・借換・補助金活用を<strong>当事者として何度も繰り返してきた集まり</strong>です。机上の空論ではなく、実際にやってきたことだけをお渡しします。</p>
+  <h2>4. BEYOND Holdings の伴走思想 (FLOWサービス)</h2>
 
-  <p>FLOWサービスでは、以下のような<strong>具体的な伴走</strong>を行います。</p>
+  <p>BEYOND Holdingsは、自分たち自身が中小企業を複数経営しながら、 ★資金繰り・事業の立て直し・新規開拓・代表交代後の組織再設計★ を当事者として何度もくぐってきた集まりです。机上の空論ではなく、実際にやってきたことだけをお渡しします。</p>
+
+  <p>FLOWは「銀行交渉サービス」ではありません。 ★お金の流れを止めないために、事業の本質を一緒に見て、立て直しの軸を作り、実働まで並走する★ サービスです。</p>
 
   <ul>
-    <li><strong>現状の見える化</strong>: 試算表が整っていない場合は、数字を作るところから着手</li>
-    <li><strong>銀行交渉の戦略設計</strong>: どの銀行に・何を・どの順で話すかを設計</li>
-    <li><strong>銀行訪問への同席</strong>: 資料作成と、必要に応じた同席</li>
-    <li><strong>補助金・助成金の戦略活用</strong>: 自社に効く制度の選定と申請伴走</li>
-    <li><strong>月次キャッシュ管理の仕組み化</strong>: 社長が10分で読める資金繰り表の定着</li>
+    <li><strong>現状の見える化</strong>: 試算表が整っていない場合は、数字を作るところから</li>
+    <li><strong>事業構造の客観評価</strong>: BS/PLから「本当のボトルネック」を特定</li>
+    <li><strong>立て直しの軸決定</strong>: 何を直すかを、優先順位と時間軸で決める</li>
+    <li><strong>実働への落とし込み</strong>: 必要ならBEYONDも一緒に手を動かす</li>
+    <li><strong>銀行・補助金への提案構築</strong>: 構造改善ストーリーを銀行員にも伝わる形に</li>
   </ul>
 
-  <p>銀行に断られた直後は、時間との戦いです。<strong>お問い合わせから1時間以内に折り返し</strong>、<strong>3営業日以内に初回ヒアリング</strong>、その<strong>2週間後には最初の打ち手</strong>を動かします。</p>
+  <p>お問い合わせから<strong>1時間以内に折り返し</strong>、<strong>3営業日以内に初回ヒアリング</strong>、その<strong>2週間後には最初の打ち手</strong>を動かします。</p>
 
   <div class="cta-block">
     <h2>次の一手、一緒に決めましょう。</h2>
@@ -367,9 +366,9 @@ footer a:hover { color: var(--gold-bright); }
   <div class="related">
     <div class="related-title">RELATED ARTICLES</div>
     <ul>
-      <li><a href="#">リスケ(条件変更)の正しい切り出し方 — 中小企業の経営者が知っておくべき7つのこと</a> <span style="color:var(--text-soft); font-size:12px;">(準備中)</span></li>
-      <li><a href="#">代表交代直後の100日でやるべき、財務まわりの優先順位</a> <span style="color:var(--text-soft); font-size:12px;">(準備中)</span></li>
-      <li><a href="#">顧問税理士・会計士が「動かない」と感じた時の、見直し基準</a> <span style="color:var(--text-soft); font-size:12px;">(準備中)</span></li>
+      <li><a href="#">リスケ(条件変更)を切り出す前に、社長がBS/PLで確認すべき7つのこと <span style="color:var(--text-soft); font-size:12px;">(準備中)</span></a></li>
+      <li><a href="#">代表交代直後の100日でやるべき、事業構造の棚卸し <span style="color:var(--text-soft); font-size:12px;">(準備中)</span></a></li>
+      <li><a href="#">顧問税理士・会計士と上手く付き合うコツと、見直しのタイミング <span style="color:var(--text-soft); font-size:12px;">(準備中)</span></a></li>
     </ul>
   </div>
 
@@ -379,7 +378,7 @@ footer a:hover { color: var(--gold-bright); }
   <div class="footer-inner">
     <div>
       <strong style="color:#fff; font-size:14px;">BEYOND FLOW</strong> ─ お金の流れを、止めない。<br>
-      中小企業の資金繰り・銀行交渉・補助金活用に、即動く伴走サービス。
+      中小企業の資金繰り・事業構造の見直し・実働伴走サービス。
     </div>
     <div class="footer-bottom">
       © 2026 BEYOND Holdings 株式会社 ─ <a href="../../">FLOW トップ</a> ─ <a href="https://www.beyond-holdings.co.jp/">運営会社</a>
