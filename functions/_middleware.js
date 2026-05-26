@@ -7,13 +7,14 @@
 
 const COUNTED_HOST_PATTERN = /^(flow\.beyond-holdings\.co\.jp|flow-beyond-playbook\.pages\.dev)$/;
 
-// クローラー対象のシステムパス (実在しないがクローラが定期的に叩く)
+// クローラー対象のシステムパス (実在するものも・PVカウント対象外)
 const EXCLUDE_PATHS = new Set([
   '/ads.txt', '/app-ads.txt', '/sellers.json',
   '/robots.txt', '/sitemap.xml',
   '/.well-known/security.txt',
   '/wp-login.php', '/wp-admin/', '/.env',
 ]);
+// SEO配信用ファイル (PVカウント対象外だが配信)
 
 export async function onRequest(context) {
   const response = await context.next();
