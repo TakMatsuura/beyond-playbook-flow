@@ -72,6 +72,19 @@ export async function onRequestPost(context) {
     const accessToken = await getAccessToken(env);
     await sendDirectMessage(env, accessToken, env.LINE_WORKS_MATSUURA_ID, msg);
 
+    // 申込数カウンタ (アクセス解析用)
+    if (env.FLOW_ANALYTICS) {
+      try {
+        const jstDate = new Intl.DateTimeFormat('en-CA', {
+          timeZone: 'Asia/Tokyo',
+          year: 'numeric', month: '2-digit', day: '2-digit',
+        }).format(new Date());
+        const submitKey = `submit:${jstDate}`;
+        const cur = parseInt((await env.FLOW_ANALYTICS.get(submitKey)) || '0', 10);
+        await env.FLOW_ANALYTICS.put(submitKey, String(cur + 1), { expirationTtl: 90 * 24 * 60 * 60 });
+      } catch (e) { console.error('submit counter:', e.message); }
+    }
+
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
       headers: cors,

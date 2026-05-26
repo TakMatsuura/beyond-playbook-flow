@@ -1,0 +1,42 @@
+name: FLOW Daily Report
+
+on:
+  schedule:
+    # 毎朝 7:00 JST = 22:00 UTC (前日分集計)
+    - cron: '0 22 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Target date (YYYY-MM-DD, blank=yesterday JST)'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Dry run (no LINE WORKS DM)'
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  send-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call daily-report API
+        env:
+          KEY: ${{ secrets.DAILY_REPORT_KEY }}
+          DATE: ${{ github.event.inputs.date }}
+          DRY: ${{ github.event.inputs.dry_run }}
+        run: |
+          set -e
+          URL="https://flow.beyond-holdings.co.jp/api/daily-report?key=${KEY}"
+          if [ -n "${DATE}" ]; then URL="${URL}&date=${DATE}"; fi
+          if [ "${DRY}" = "true" ]; then URL="${URL}&dry_run=1"; fi
+          echo "Calling daily-report API"
+          RESP=$(curl -s -w "\nHTTP_STATUS:%{http_code}" "${URL}")
+          STATUS=$(echo "${RESP}" | grep -oP 'HTTP_STATUS:\K[0-9]+')
+          BODY=$(echo "${RESP}" | sed '$d')
+          echo "Status: ${STATUS}"
+          echo "Body: ${BODY}"
+          if [ "${STATUS}" != "200" ]; then
+            echo "::error::Daily report failed (status=${STATUS})"
+            exit 1
+          fi

@@ -1,0 +1,6 @@
+name = "flow-beyond-playbook"
+compatibility_date = "2025-01-01"
+
+[[kv_namespaces]]
+binding = "FLOW_ANALYTICS"
+id = "d5f6a0a06f0e4682a865a475d12a0395"

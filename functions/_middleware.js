@@ -1,0 +1,77 @@
+/**
+ * 全リクエストをKVでカウント (アクセス解析)
+ * - 日付別 (JST) page view, unique visitor
+ * - /api/*, /assets/*, ロボット, faviconはカウント除外
+ * - 軽量・パフォーマンス影響最小
+ */
+
+const COUNTED_HOST_PATTERN = /^(flow\.beyond-holdings\.co\.jp|flow-beyond-playbook\.pages\.dev)$/;
+
+export async function onRequest(context) {
+  // 先にレスポンス取得 (失敗時はカウントスキップ)
+  const response = await context.next();
+
+  try {
+    const url = new URL(context.request.url);
+    const path = url.pathname;
+    const host = url.hostname;
+    const method = context.request.method;
+    const userAgent = context.request.headers.get('user-agent') || '';
+    const ip = context.request.headers.get('cf-connecting-ip') || 'unknown';
+
+    // カウント対象外を弾く
+    if (method !== 'GET') return response;
+    if (!COUNTED_HOST_PATTERN.test(host)) return response;
+    if (path.startsWith('/api/')) return response;
+    if (path.startsWith('/assets/')) return response;
+    if (path.includes('/favicon')) return response;
+    if (path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.svg') || path.endsWith('.css') || path.endsWith('.js')) return response;
+    // 主要ボット弾き
+    if (/bot|crawler|spider|monitor|preview|fetch|wget|curl|httpie/i.test(userAgent)) return response;
+
+    // JST 日付キー
+    const jstDate = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Tokyo',
+      year: 'numeric', month: '2-digit', day: '2-digit',
+    }).format(new Date()); // "2026-05-26"
+
+    // カウント (waitUntilで応答を遅らせない)
+    context.waitUntil(recordHit(context.env, jstDate, path, ip));
+  } catch (e) {
+    console.error('[_middleware] hit recording error:', e.message);
+  }
+
+  return response;
+}
+
+async function recordHit(env, date, path, ip) {
+  if (!env.FLOW_ANALYTICS) return;
+
+  // PV ++
+  const pvKey = `pv:${date}`;
+  const pvCur = parseInt((await env.FLOW_ANALYTICS.get(pvKey)) || '0', 10);
+  await env.FLOW_ANALYTICS.put(pvKey, String(pvCur + 1), { expirationTtl: 90 * 24 * 60 * 60 });
+
+  // UU (IP hash簡易管理)
+  const ipHash = await sha256(ip + date).then(h => h.slice(0, 12));
+  const uuKey = `uu:${date}:${ipHash}`;
+  const existing = await env.FLOW_ANALYTICS.get(uuKey);
+  if (!existing) {
+    await env.FLOW_ANALYTICS.put(uuKey, '1', { expirationTtl: 90 * 24 * 60 * 60 });
+    const uuCountKey = `uucount:${date}`;
+    const uuCur = parseInt((await env.FLOW_ANALYTICS.get(uuCountKey)) || '0', 10);
+    await env.FLOW_ANALYTICS.put(uuCountKey, String(uuCur + 1), { expirationTtl: 90 * 24 * 60 * 60 });
+  }
+
+  // パス別 PV
+  const cleanPath = path.split('?')[0].replace(/\/+$/, '/');
+  const pathKey = `path:${date}:${cleanPath}`;
+  const pathCur = parseInt((await env.FLOW_ANALYTICS.get(pathKey)) || '0', 10);
+  await env.FLOW_ANALYTICS.put(pathKey, String(pathCur + 1), { expirationTtl: 90 * 24 * 60 * 60 });
+}
+
+async function sha256(str) {
+  const buf = new TextEncoder().encode(str);
+  const hash = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
