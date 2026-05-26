@@ -1,8 +1,9 @@
 /**
- * 管理ダッシュボード用 KV集計 API
+ * 管理ダッシュボード用 KV集計 API (並列化版)
  * - GET /api/admin-stats?days=30
  * - Basic Auth は _middleware.js 側で /admin/* と /api/admin-stats を保護
  * - 過去N日分のPV/UU/申込/メルマガ/パス別 を返す
+ * - Promise.all で全KVアクセスを並列化 (30日 = 数百ops → 1-2秒に短縮)
  */
 
 export async function onRequestGet(context) {
@@ -23,24 +24,44 @@ export async function onRequestGet(context) {
     }).format(d));
   }
 
+  // ===== 並列化 1: 日別 KPI 全部一気に =====
+  const kpiPromises = dates.flatMap(date => [
+    env.FLOW_ANALYTICS.get(`pv:${date}`),
+    env.FLOW_ANALYTICS.get(`uucount:${date}`),
+    env.FLOW_ANALYTICS.get(`submit:${date}`),
+    env.FLOW_ANALYTICS.get(`newsletter_count:${date}`),
+  ]);
+  const kpiResults = await Promise.all(kpiPromises);
+
   const daily = [];
-  const pathMap = {};
   let totalPV = 0, totalUU = 0, totalSubmit = 0, totalNewsletter = 0;
-
-  for (const date of dates) {
-    const pv = parseInt((await env.FLOW_ANALYTICS.get(`pv:${date}`)) || '0', 10);
-    const uu = parseInt((await env.FLOW_ANALYTICS.get(`uucount:${date}`)) || '0', 10);
-    const submit = parseInt((await env.FLOW_ANALYTICS.get(`submit:${date}`)) || '0', 10);
-    const newsletter = parseInt((await env.FLOW_ANALYTICS.get(`newsletter_count:${date}`)) || '0', 10);
-    daily.push({ date, pv, uu, submit, newsletter });
+  for (let i = 0; i < dates.length; i++) {
+    const pv = parseInt(kpiResults[i*4]     || '0', 10);
+    const uu = parseInt(kpiResults[i*4 + 1] || '0', 10);
+    const submit = parseInt(kpiResults[i*4 + 2] || '0', 10);
+    const newsletter = parseInt(kpiResults[i*4 + 3] || '0', 10);
+    daily.push({ date: dates[i], pv, uu, submit, newsletter });
     totalPV += pv; totalUU += uu; totalSubmit += submit; totalNewsletter += newsletter;
+  }
 
-    const pathList = await env.FLOW_ANALYTICS.list({ prefix: `path:${date}:` });
-    for (const k of pathList.keys) {
-      const cnt = parseInt(await env.FLOW_ANALYTICS.get(k.name) || '0', 10);
-      const p = k.name.replace(`path:${date}:`, '');
-      pathMap[p] = (pathMap[p] || 0) + cnt;
-    }
+  // ===== 並列化 2: パス別 list を全日付一気に =====
+  const listPromises = dates.map(date => env.FLOW_ANALYTICS.list({ prefix: `path:${date}:` }));
+  const listResults = await Promise.all(listPromises);
+
+  // ===== 並列化 3: パス別 GET を全部フラットに並列 =====
+  const allPathKeys = [];
+  for (const list of listResults) {
+    for (const k of list.keys) allPathKeys.push(k.name);
+  }
+  const pathValues = await Promise.all(allPathKeys.map(k => env.FLOW_ANALYTICS.get(k)));
+
+  const pathMap = {};
+  for (let i = 0; i < allPathKeys.length; i++) {
+    const cnt = parseInt(pathValues[i] || '0', 10);
+    const m = allPathKeys[i].match(/^path:\d{4}-\d{2}-\d{2}:(.+)$/);
+    if (!m) continue;
+    const p = m[1];
+    pathMap[p] = (pathMap[p] || 0) + cnt;
   }
 
   const paths = Object.entries(pathMap).map(([path, count]) => ({ path, count }))

@@ -96,30 +96,14 @@ function checkBasicAuth(request, env) {
   });
 }
 
+// ★ver0.2 (2026-05-27): KV PV計測を ★Cloudflare Web Analytics★ に移管★
+//   理由: 全PV毎に4 PUT → 1日1000PUT制限即超過 → Cloudflare $5課金通知
+//   対策: PV/UU/path計測は ★HTMLに <script> タグで Cloudflare Web Analytics★
+//          (★無料無制限・国/デバイス/滞在時間 等 高機能)
+//   この関数は ★no-op化★ (★newsletter/submit等の重要KV PUT は そっち側で継続)
 async function recordHit(env, date, path, ip) {
-  if (!env.FLOW_ANALYTICS) return;
-
-  // PV ++
-  const pvKey = `pv:${date}`;
-  const pvCur = parseInt((await env.FLOW_ANALYTICS.get(pvKey)) || '0', 10);
-  await env.FLOW_ANALYTICS.put(pvKey, String(pvCur + 1), { expirationTtl: 90 * 24 * 60 * 60 });
-
-  // UU (IP hash簡易管理)
-  const ipHash = await sha256(ip + date).then(h => h.slice(0, 12));
-  const uuKey = `uu:${date}:${ipHash}`;
-  const existing = await env.FLOW_ANALYTICS.get(uuKey);
-  if (!existing) {
-    await env.FLOW_ANALYTICS.put(uuKey, '1', { expirationTtl: 90 * 24 * 60 * 60 });
-    const uuCountKey = `uucount:${date}`;
-    const uuCur = parseInt((await env.FLOW_ANALYTICS.get(uuCountKey)) || '0', 10);
-    await env.FLOW_ANALYTICS.put(uuCountKey, String(uuCur + 1), { expirationTtl: 90 * 24 * 60 * 60 });
-  }
-
-  // パス別 PV
-  const cleanPath = path.split('?')[0].replace(/\/+$/, '/');
-  const pathKey = `path:${date}:${cleanPath}`;
-  const pathCur = parseInt((await env.FLOW_ANALYTICS.get(pathKey)) || '0', 10);
-  await env.FLOW_ANALYTICS.put(pathKey, String(pathCur + 1), { expirationTtl: 90 * 24 * 60 * 60 });
+  // ★KV PV計測 廃止 - Cloudflare Web Analytics に移行★
+  return;
 }
 
 async function sha256(str) {
