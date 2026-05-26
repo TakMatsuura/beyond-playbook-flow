@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="1分でできる、財務体力チェック｜FLOW｜BEYOND Playbook。5問で中小企業の財務体力を判定し、次の打ち手を提案します。">
+<meta name="robots" content="noindex">
+<title>1分でできる、財務体力チェック｜FLOW｜BEYOND Playbook</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23060b1a'/><stop offset='1' stop-color='%230a1e3d'/></linearGradient></defs><rect width='100' height='100' rx='18' fill='url(%23g)'/><text x='50' y='80' font-family='Inter,Arial,sans-serif' font-weight='900' font-size='92' fill='%23f5c542' text-anchor='middle' letter-spacing='-2'>F</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff; --bg-soft: #f7f6f3; --bg-dark: #060b1a;
+  --text: #1a1a1a; --text-soft: #555; --line: #e5e3dc;
+  --accent: #0a1e3d; --accent-deep: #050d1f;
+  --gold: #d4a843; --gold-bright: #f5c542; --gold-deep: #a07d2c;
+  --red: #8b1c1c; --green: #2d6a3e;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text); background: var(--bg-soft);
+  line-height: 1.7; font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ヘッダー */
+header {
+  background: #fff; border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1200px; margin: 0 auto;
+}
+.logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo .brand-logo { height: 28px; width: auto; display: block; filter: brightness(0) saturate(100%); }
+.logo .brand-name {
+  font-family: 'Inter', sans-serif; font-weight: 900; font-size: 22px;
+  letter-spacing: 0.04em; color: var(--accent);
+  padding-left: 12px; border-left: 1px solid var(--line); line-height: 1;
+}
+.back-link { font-size: 13px; color: var(--text-soft); }
+.back-link:hover { color: var(--accent); }
+
+/* メイン */
+main {
+  flex: 1; max-width: 720px; margin: 0 auto; padding: 56px 24px;
+  width: 100%;
+}
+
+/* プログレスバー */
+.progress-wrap {
+  margin-bottom: 32px; display: flex; align-items: center; gap: 12px;
+}
+.progress-text {
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 13px;
+  color: var(--accent); letter-spacing: 0.05em; white-space: nowrap;
+}
+.progress-bar {
+  flex: 1; height: 6px; background: var(--line); border-radius: 999px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-bright) 100%);
+  border-radius: 999px; transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.timer-text {
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 12px;
+  color: var(--text-soft); white-space: nowrap;
+}
+
+/* スタート画面 */
+.start-screen {
+  background: #fff; padding: 56px 40px; border-radius: 12px;
+  border: 1px solid var(--line); text-align: center;
+}
+.start-en {
+  font-family: 'Inter', sans-serif; font-weight: 800;
+  font-size: 14px; letter-spacing: 0.2em; color: var(--gold-deep);
+  margin-bottom: 16px;
+}
+.start-title {
+  font-size: clamp(26px, 4vw, 36px); font-weight: 900; line-height: 1.4;
+  margin-bottom: 20px;
+}
+.start-title strong { color: var(--gold-deep); }
+.start-lead {
+  font-size: 16px; line-height: 1.9; color: var(--text-soft);
+  margin-bottom: 40px;
+}
+.start-meta {
+  display: flex; justify-content: center; gap: 32px; margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.meta-item {
+  text-align: center;
+}
+.meta-num {
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 32px;
+  color: var(--accent); line-height: 1;
+}
+.meta-label {
+  font-size: 12px; color: var(--text-soft); margin-top: 6px;
+}
+.btn-start {
+  display: inline-block; padding: 20px 56px;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px;
+  font-size: 17px; font-weight: 800;
+  cursor: pointer; transition: all 0.2s;
+  font-family: inherit;
+}
+.btn-start:hover {
+  background: var(--accent-deep); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(10, 30, 61, 0.25);
+}
+
+/* 質問画面 */
+.question-screen {
+  background: #fff; padding: 48px 40px; border-radius: 12px;
+  border: 1px solid var(--line);
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.q-num {
+  font-family: 'Inter', sans-serif; font-weight: 800;
+  font-size: 13px; letter-spacing: 0.2em; color: var(--gold-deep);
+  margin-bottom: 12px;
+}
+.q-title {
+  font-size: clamp(20px, 3vw, 26px); font-weight: 900; line-height: 1.5;
+  margin-bottom: 32px;
+}
+.options { display: grid; gap: 12px; }
+.option-btn {
+  text-align: left; padding: 20px 24px;
+  background: #fff; border: 2px solid var(--line); border-radius: 8px;
+  font-size: 16px; font-weight: 500; color: var(--text);
+  cursor: pointer; transition: all 0.15s;
+  font-family: inherit; line-height: 1.6;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+}
+.option-btn:hover {
+  border-color: var(--accent); background: #f7f9fc;
+  transform: translateX(4px);
+}
+.option-btn::after {
+  content: '→'; font-size: 18px; color: var(--gold);
+  opacity: 0; transition: opacity 0.15s;
+}
+.option-btn:hover::after { opacity: 1; }
+
+/* 結果画面 */
+.result-screen {
+  background: #fff; padding: 56px 40px; border-radius: 12px;
+  border: 1px solid var(--line);
+  animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.result-en {
+  font-family: 'Inter', sans-serif; font-weight: 800;
+  font-size: 13px; letter-spacing: 0.2em; color: var(--gold-deep);
+  margin-bottom: 12px; text-align: center;
+}
+.result-grade {
+  font-family: 'Inter', sans-serif; font-weight: 900;
+  font-size: clamp(72px, 12vw, 120px); line-height: 1;
+  text-align: center; margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.result-label {
+  font-size: clamp(20px, 3vw, 26px); font-weight: 900; text-align: center;
+  margin-bottom: 32px;
+}
+.result-comment {
+  background: var(--bg-soft); padding: 28px 32px; border-radius: 8px;
+  margin-bottom: 32px; line-height: 2; font-size: 15px;
+  border-left: 4px solid var(--gold);
+}
+.result-comment strong { color: var(--accent); }
+.result-next {
+  text-align: center; margin-bottom: 32px;
+}
+.result-next-title {
+  font-size: 17px; font-weight: 800; margin-bottom: 12px;
+}
+.result-next-text {
+  font-size: 14px; color: var(--text-soft); line-height: 1.9; margin-bottom: 24px;
+}
+.btn-apply {
+  display: inline-block; padding: 20px 48px;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 8px;
+  font-size: 16px; font-weight: 800;
+  cursor: pointer; transition: all 0.2s;
+  font-family: inherit; text-decoration: none;
+}
+.btn-apply:hover {
+  background: var(--accent-deep); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(10, 30, 61, 0.25); color: #fff;
+}
+.result-meta {
+  text-align: center; font-size: 13px; color: var(--text-soft);
+  padding-top: 24px; border-top: 1px solid var(--line);
+}
+.result-meta strong { color: var(--gold-deep); font-weight: 700; }
+
+/* スコア別グレード色 */
+.result-screen.grade-a .result-grade {
+  background: linear-gradient(135deg, #2d6a3e 0%, #1e4a2c 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+.result-screen.grade-d .result-grade {
+  background: linear-gradient(135deg, #b8284f 0%, #6a1a30 100%);
+  -webkit-background-clip: text; background-clip: text;
+}
+
+/* フッター */
+footer {
+  background: #fff; border-top: 1px solid var(--line);
+  padding: 24px; text-align: center; font-size: 12px; color: var(--text-soft);
+}
+footer a { color: var(--accent); text-decoration: underline; }
+
+@media(max-width: 640px) {
+  main { padding: 32px 16px; }
+  .start-screen, .question-screen, .result-screen { padding: 32px 24px; }
+  .option-btn { padding: 18px 20px; font-size: 15px; }
+  .start-meta { gap: 20px; }
+  .meta-num { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="../" class="logo">
+      <img src="../assets/beyond_logo.png" alt="BEYOND Holdings" class="brand-logo">
+      <span class="brand-name">FLOW</span>
+    </a>
+    <a href="../" class="back-link">← トップへ戻る</a>
+  </div>
+</header>
+
+<main>
+
+<!-- プログレスバー (質問・結果画面のみ表示) -->
+<div class="progress-wrap" id="progress-wrap" style="display:none;">
+  <span class="progress-text" id="progress-text">Q 1 / 5</span>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:20%;"></div></div>
+  <span class="timer-text" id="timer-text">残り 約45秒</span>
+</div>
+
+<!-- スタート画面 -->
+<div class="start-screen" id="start-screen">
+  <div class="start-en">FINANCIAL CHECK</div>
+  <h1 class="start-title">1分でできる、<br><strong>財務体力チェック</strong></h1>
+  <p class="start-lead">
+    5つの質問に答えるだけ。<br>
+    あなたの会社の財務体力を判定し、<br>
+    次の打ち手をBEYONDから1行でお伝えします。
+  </p>
+  <div class="start-meta">
+    <div class="meta-item">
+      <div class="meta-num">5</div>
+      <div class="meta-label">質問数</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-num">45<span style="font-size:16px;">秒</span></div>
+      <div class="meta-label">平均完了時間</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-num">0<span style="font-size:16px;">円</span></div>
+      <div class="meta-label">完全無料</div>
+    </div>
+  </div>
+  <button type="button" class="btn-start" onclick="startCheck()">チェックを始める →</button>
+</div>
+
+<!-- 質問画面 (動的に切替) -->
+<div class="question-screen" id="question-screen" style="display:none;">
+  <div class="q-num" id="q-num">QUESTION 1</div>
+  <h2 class="q-title" id="q-title">問題文</h2>
+  <div class="options" id="q-options"></div>
+</div>
+
+<!-- 結果画面 -->
+<div class="result-screen" id="result-screen" style="display:none;">
+  <div class="result-en">YOUR RESULT</div>
+  <div class="result-grade" id="result-grade">B</div>
+  <div class="result-label" id="result-label">健全だが、論点あり。</div>
+  <div class="result-comment" id="result-comment"></div>
+  <div class="result-next">
+    <div class="result-next-title">次の一手を、一緒に決めましょう。</div>
+    <p class="result-next-text">
+      ヒアリングは無料です。<br>
+      診断結果を見ながら、具体的な打ち手をお持ちします。<br>
+      <strong>1時間以内に折り返します。</strong>
+    </p>
+    <a href="../apply/" class="btn-apply" id="btn-apply">ヒアリングを申し込む →</a>
+  </div>
+  <div class="result-meta">
+    Score: <strong id="result-score">0</strong> / 25 点<br>
+    判定基準: A 21-25 / B 14-20 / C 7-13 / D 0-6
+  </div>
+</div>
+
+</main>
+
+<footer>
+  © 2026 BEYOND Holdings 株式会社 —
+  <a href="../">FLOW トップ</a>
+</footer>
+
+<script>
+// ============ 設問定義 ============
+const QUESTIONS = [
+  {
+    title: '現預金は、月商の何ヶ月分ありますか?',
+    options: [
+      { label: '6ヶ月以上', score: 5 },
+      { label: '3〜6ヶ月', score: 4 },
+      { label: '1〜3ヶ月', score: 2 },
+      { label: '1ヶ月未満', score: 0 },
+      { label: '正確には把握していない', score: -1, unknown: true },
+    ],
+  },
+  {
+    title: '試算表は、毎月いつ手元に届きますか?',
+    options: [
+      { label: '翌月10日以内', score: 5 },
+      { label: '翌月末まで', score: 3 },
+      { label: '2ヶ月遅れ以上', score: 1 },
+      { label: '出てこない / 把握していない', score: 0, unknown: true },
+    ],
+  },
+  {
+    title: '取引銀行は何行ありますか?',
+    options: [
+      { label: '3行以上', score: 5 },
+      { label: '2行', score: 3 },
+      { label: '1行のみ', score: 1 },
+      { label: '把握していない', score: 0, unknown: true },
+    ],
+  },
+  {
+    title: '過去3年で、銀行から融資を断られた経験は?',
+    options: [
+      { label: 'ない', score: 5 },
+      { label: '1回ある', score: 3 },
+      { label: '2回以上ある', score: 1 },
+      { label: '申請したことがない', score: 2 },
+    ],
+  },
+  {
+    title: '補助金・助成金は、過去3年で活用しましたか?',
+    options: [
+      { label: '採択された', score: 5 },
+      { label: '申請したが不採択だった', score: 2 },
+      { label: '申請したことがない', score: 1 },
+      { label: 'どの制度が使えるか分からない', score: 0, unknown: true },
+    ],
+  },
+];
+
+// ============ 判定基準 ============
+function judge(totalScore, unknownCount) {
+  if (unknownCount >= 3) {
+    return {
+      grade: '?',
+      label: 'まず、数字の見える化から。',
+      gradeClass: '',
+      comment: `現状把握できていない項目が <strong>${unknownCount}つ</strong> あります。財務体力の判定以前に、まず<strong>「数字が見える状態」</strong>を作ることが最優先です。<br><br>BEYONDは数字作りから一緒に着手できます。試算表が出ない、月次決算が遅れている、銀行残高すら把握できていない ── そんな状態からでも、最初の数週間で見える化を完了させます。<br><br><strong>遅くなる前に、一度話しましょう。</strong>`,
+    };
+  }
+  if (totalScore >= 21) {
+    return {
+      grade: 'A',
+      label: '攻めの財務、できる体制。',
+      gradeClass: 'grade-a',
+      comment: `あなたの会社は、財務体力が<strong>非常に強い状態</strong>です。<br>守りの財務は十分。次は<strong>「攻め」のお金の使い方</strong>(新規事業投資・M&A・人材投資)を一緒に設計するフェーズです。<br><br>BEYONDは攻めるお金の戦略設計に強みがあります。次の3年で会社をどこまで伸ばすか、一緒に絵を描きましょう。`,
+    };
+  }
+  if (totalScore >= 14) {
+    return {
+      grade: 'B',
+      label: '健全だが、論点あり。',
+      gradeClass: '',
+      comment: `基本は健全ですが、<strong>整理すれば加速できる論点</strong>がいくつか眠っています。<br>たとえば取引銀行の分散、補助金の戦略的活用、月次キャッシュフローの仕組み化 ── これらは1-3ヶ月で整えられる範囲です。<br><br>「現状で困ってはいない」社長こそ、<strong>次の打ち手を整理する価値が大きい</strong>です。`,
+    };
+  }
+  if (totalScore >= 7) {
+    return {
+      grade: 'C',
+      label: '早めの整理が、必要。',
+      gradeClass: '',
+      comment: `<strong>待たずに動くことを推奨</strong>します。<br>キャッシュの余裕・銀行リレーション・補助金活用のいずれかに、明らかな課題があります。今は致命的ではなくても、半年〜1年で表面化するリスクがあります。<br><br>BEYONDは具体的な打ち手をその場で握り、2週間以内に最初のアクションを動かします。`,
+    };
+  }
+  return {
+    grade: 'D',
+    label: '緊急対応を、推奨。',
+    gradeClass: 'grade-d',
+    comment: `<strong>今すぐ動く必要があります。</strong><br>キャッシュ・銀行・補助金のいずれかに、深刻な懸念があります。「あと何ヶ月もつか」を数字で確定させ、銀行交渉や資金繰り再設計を急いで進めるべき状況です。<br><br>BEYONDは資金繰り危機対応の経験が豊富です。<strong>お問い合わせから1時間以内に折り返します。</strong>今すぐご相談ください。`,
+  };
+}
+
+// ============ 状態管理 ============
+let state = {
+  currentQ: 0,
+  scores: [],
+  unknowns: [],
+};
+
+const $start = document.getElementById('start-screen');
+const $question = document.getElementById('question-screen');
+const $result = document.getElementById('result-screen');
+const $progressWrap = document.getElementById('progress-wrap');
+const $progressFill = document.getElementById('progress-fill');
+const $progressText = document.getElementById('progress-text');
+const $timerText = document.getElementById('timer-text');
+
+function startCheck() {
+  state = { currentQ: 0, scores: [], unknowns: [] };
+  $start.style.display = 'none';
+  $progressWrap.style.display = 'flex';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[state.currentQ];
+  document.getElementById('q-num').textContent = `QUESTION ${state.currentQ + 1}`;
+  document.getElementById('q-title').textContent = q.title;
+
+  const $opts = document.getElementById('q-options');
+  $opts.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'option-btn';
+    btn.innerHTML = `<span>${opt.label}</span>`;
+    btn.onclick = () => selectOption(opt);
+    $opts.appendChild(btn);
+  });
+
+  // プログレス
+  const pct = ((state.currentQ + 1) / QUESTIONS.length) * 100;
+  $progressFill.style.width = pct + '%';
+  $progressText.textContent = `Q ${state.currentQ + 1} / ${QUESTIONS.length}`;
+  const remainSec = (QUESTIONS.length - state.currentQ) * 9;
+  $timerText.textContent = `残り 約${remainSec}秒`;
+
+  $question.style.display = 'block';
+  $question.style.animation = 'none';
+  void $question.offsetWidth;
+  $question.style.animation = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function selectOption(opt) {
+  state.scores.push(opt.score);
+  if (opt.unknown) state.unknowns.push(state.currentQ);
+
+  if (state.currentQ < QUESTIONS.length - 1) {
+    state.currentQ++;
+    setTimeout(renderQuestion, 200);
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  const total = state.scores.reduce((s, x) => s + x, 0);
+  const unknownCount = state.unknowns.length;
+  const result = judge(total, unknownCount);
+
+  document.getElementById('result-grade').textContent = result.grade;
+  document.getElementById('result-label').textContent = result.label;
+  document.getElementById('result-comment').innerHTML = result.comment;
+  document.getElementById('result-score').textContent = Math.max(0, total);
+  $result.className = 'result-screen ' + (result.gradeClass || '');
+
+  $question.style.display = 'none';
+  $progressFill.style.width = '100%';
+  $progressText.textContent = `完了`;
+  $timerText.textContent = `お疲れさまでした`;
+
+  $result.style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // 結果データを localStorage に保存 (apply フォームで自動引用するため)
+  try {
+    localStorage.setItem('flow_check_result', JSON.stringify({
+      grade: result.grade,
+      label: result.label,
+      score: Math.max(0, total),
+      unknownCount,
+      timestamp: new Date().toISOString(),
+    }));
+  } catch(e) {}
+}
+</script>
+
+</body>
+</html>
