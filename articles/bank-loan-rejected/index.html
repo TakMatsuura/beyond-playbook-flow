@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="銀行に追加融資を断られた直後、多くの社長がやりがちな3つの間違いと、72時間で取るべき正しい3つの行動を、中小企業の実例とともに解説します。BEYOND Holdingsの財務伴走サービスFLOWより。">
+<meta name="keywords" content="銀行 融資 断られた,追加融資 断られた,中小企業 融資 断られた,リスケ,融資 NG,銀行交渉">
+<meta property="og:title" content="「銀行に追加融資を断られた」その時、社長が最初に取るべき3つの行動｜FLOW">
+<meta property="og:description" content="断られた直後の72時間で取るべき正しいアクション。BEYOND伴走の実例と合わせて解説。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://flow.beyond-holdings.co.jp/articles/bank-loan-rejected/">
+<title>「銀行に追加融資を断られた」その時、社長が最初に取るべき3つの行動｜FLOW</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%23060b1a'/><stop offset='1' stop-color='%230a1e3d'/></linearGradient></defs><rect width='100' height='100' rx='18' fill='url(%23g)'/><text x='50' y='80' font-family='Inter,Arial,sans-serif' font-weight='900' font-size='92' fill='%23f5c542' text-anchor='middle' letter-spacing='-2'>F</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff; --bg-soft: #f7f6f3; --bg-dark: #060b1a;
+  --text: #1a1a1a; --text-soft: #555; --line: #e5e3dc;
+  --accent: #0a1e3d; --accent-deep: #050d1f;
+  --gold: #d4a843; --gold-bright: #f5c542; --gold-deep: #a07d2c;
+  --red: #8b1c1c;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: var(--text); background: #fff;
+  line-height: 1.9; font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent); text-decoration: underline; }
+
+/* ヘッダー */
+header { background: #fff; border-bottom: 1px solid var(--line); }
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1080px; margin: 0 auto;
+}
+.logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo .brand-logo { height: 28px; width: auto; display: block; filter: brightness(0) saturate(100%); }
+.logo .brand-name {
+  font-family: 'Inter', sans-serif; font-weight: 900; font-size: 22px;
+  letter-spacing: 0.04em; color: var(--accent);
+  padding-left: 12px; border-left: 1px solid var(--line); line-height: 1;
+}
+.back-link { font-size: 13px; color: var(--text-soft); text-decoration: none; }
+.back-link:hover { color: var(--accent); }
+
+/* パンくず */
+.breadcrumb {
+  max-width: 760px; margin: 24px auto 0; padding: 0 24px;
+  font-size: 13px; color: var(--text-soft);
+}
+.breadcrumb a { color: var(--text-soft); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); }
+
+/* 記事本体 */
+article {
+  max-width: 760px; margin: 0 auto; padding: 40px 24px 80px;
+}
+.article-meta {
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 12px;
+  letter-spacing: 0.15em; color: var(--gold-deep);
+  margin-bottom: 16px; text-transform: uppercase;
+}
+article h1 {
+  font-size: clamp(26px, 4vw, 36px); font-weight: 900; line-height: 1.5;
+  margin-bottom: 32px;
+}
+.article-lead {
+  font-size: 17px; line-height: 2; color: var(--text);
+  padding: 24px 28px; background: var(--bg-soft);
+  border-left: 4px solid var(--gold); border-radius: 4px;
+  margin-bottom: 48px;
+}
+.article-lead strong { color: var(--accent); }
+
+article h2 {
+  font-size: clamp(22px, 3vw, 28px); font-weight: 900; line-height: 1.5;
+  margin-top: 64px; margin-bottom: 24px;
+  padding-bottom: 12px; border-bottom: 2px solid var(--accent);
+}
+article h3 {
+  font-size: 18px; font-weight: 800; line-height: 1.6;
+  margin-top: 36px; margin-bottom: 16px;
+  color: var(--accent);
+}
+article p {
+  margin-bottom: 20px; line-height: 1.95;
+}
+article p strong { color: var(--accent); font-weight: 700; }
+article ul, article ol { margin-bottom: 20px; padding-left: 24px; }
+article li { margin-bottom: 12px; line-height: 1.85; }
+
+/* 警告ボックス (NGリスト) */
+.ng-box {
+  background: #fff5f5; border: 1px solid #e8b8b8;
+  border-radius: 8px; padding: 24px 28px; margin: 24px 0;
+}
+.ng-box-title {
+  font-weight: 800; color: var(--red); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.ng-box-title::before { content: '⚠️'; font-size: 18px; }
+.ng-box ul { margin: 0; padding-left: 20px; }
+.ng-box li { margin-bottom: 8px; }
+
+/* ハイライトボックス (正しい行動) */
+.do-box {
+  background: #f5fbf6; border: 1px solid #b8d9c0;
+  border-radius: 8px; padding: 24px 28px; margin: 24px 0;
+}
+.do-box-title {
+  font-weight: 800; color: #2d6a3e; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.do-box-title::before { content: '✅'; font-size: 18px; }
+
+/* 事例カード */
+.case-card {
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: 28px 32px; background: #fff;
+  margin: 32px 0;
+}
+.case-meta {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  padding: 4px 10px; background: var(--accent); color: #fff;
+  border-radius: 4px; letter-spacing: 0.05em; margin-bottom: 12px;
+}
+.case-card h4 { font-size: 16px; font-weight: 800; margin-bottom: 12px; }
+.case-result {
+  background: var(--bg-soft); padding: 16px 20px; border-radius: 6px;
+  margin-top: 16px; font-weight: 700;
+}
+.case-result strong { color: var(--accent); }
+
+/* CTAブロック */
+.cta-block {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+  color: #fff; padding: 48px 40px; border-radius: 12px;
+  margin: 64px 0 32px; text-align: center;
+}
+.cta-block h2 {
+  color: #fff; font-size: clamp(22px, 3vw, 28px); font-weight: 900;
+  line-height: 1.5; margin: 0 0 16px; padding: 0; border: none;
+}
+.cta-block p { color: rgba(255,255,255,0.85); margin-bottom: 28px; }
+.cta-block .cta-btns {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+}
+.cta-btn-primary, .cta-btn-secondary {
+  display: inline-block; padding: 18px 32px;
+  border-radius: 6px; font-size: 15px; font-weight: 700;
+  text-decoration: none; transition: all 0.2s; border: 2px solid transparent;
+}
+.cta-btn-primary {
+  background: var(--gold-bright); color: var(--accent-deep);
+  border-color: var(--gold-bright);
+}
+.cta-btn-primary:hover {
+  background: #ffe07a; border-color: #ffe07a; transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 197, 66, 0.4);
+}
+.cta-btn-secondary {
+  background: transparent; color: #fff; border-color: rgba(255,255,255,0.4);
+}
+.cta-btn-secondary:hover {
+  background: #fff; color: var(--accent); border-color: #fff;
+}
+
+/* 関連記事 */
+.related {
+  margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--line);
+}
+.related-title {
+  font-family: 'Inter', sans-serif; font-weight: 800; font-size: 13px;
+  letter-spacing: 0.2em; color: var(--gold-deep); margin-bottom: 20px;
+}
+.related ul { list-style: none; padding: 0; }
+.related li { margin-bottom: 12px; }
+.related a {
+  display: block; padding: 16px 20px; background: var(--bg-soft);
+  border-radius: 6px; text-decoration: none; color: var(--text);
+  transition: all 0.2s;
+}
+.related a:hover { background: #ecebe5; transform: translateX(4px); }
+.related a::after { content: ' →'; color: var(--gold); }
+
+/* フッター */
+footer {
+  background: #0a0e1a; color: rgba(255,255,255,0.7);
+  padding: 48px 24px 32px; font-size: 13px;
+}
+.footer-inner { max-width: 760px; margin: 0 auto; }
+footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
+footer a:hover { color: var(--gold-bright); }
+.footer-bottom {
+  margin-top: 24px; padding-top: 20px; font-size: 12px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+@media(max-width: 640px) {
+  article { padding: 24px 20px 60px; }
+  .article-lead { padding: 20px; font-size: 15px; }
+  .cta-block { padding: 32px 24px; }
+  .cta-block .cta-btns { flex-direction: column; }
+  .cta-btn-primary, .cta-btn-secondary { display: block; padding: 16px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="../../" class="logo">
+      <img src="../../assets/beyond_logo.png" alt="BEYOND Holdings" class="brand-logo">
+      <span class="brand-name">FLOW</span>
+    </a>
+    <a href="../../" class="back-link">← トップへ戻る</a>
+  </div>
+</header>
+
+<nav class="breadcrumb">
+  <a href="../../">FLOW</a> &nbsp;/&nbsp; <a href="../">記事一覧</a> &nbsp;/&nbsp; 銀行に追加融資を断られた時の3つの行動
+</nav>
+
+<article>
+
+  <div class="article-meta">FINANCIAL COLUMN · 2026.05.26</div>
+
+  <h1>「銀行に追加融資を断られた」その時、社長が最初に取るべき3つの行動</h1>
+
+  <div class="article-lead">
+    銀行から融資を断られた瞬間、<strong>多くの社長がやりがちな3つの間違い</strong>があります。<br>
+    本記事では、断られた直後の<strong>72時間で取るべき正しい行動</strong>を、実際にBEYOND Holdingsが伴走した中小企業の事例とともに解説します。<br>
+    「次にどう動けばいいか分からない」と立ち止まっている経営者に、明日から動ける手順をお渡しします。
+  </div>
+
+  <h2>1. 断られた直後にやりがちな3つの間違い</h2>
+
+  <p>融資を断られた直後、経営者の頭は焦りで一杯になります。その焦りが、<strong>次の融資の可能性をさらに下げる行動</strong>を引き起こすことが少なくありません。</p>
+
+  <div class="ng-box">
+    <div class="ng-box-title">よくあるNG行動</div>
+    <ul>
+      <li><strong>NG①</strong>: 他の銀行をすぐ回って同じ申請を出す</li>
+      <li><strong>NG②</strong>: とりあえず顧問税理士・会計士に相談する</li>
+      <li><strong>NG③</strong>: いきなり経費削減・人員見直しに走る</li>
+    </ul>
+  </div>
+
+  <h3>NG① なぜ「他行をすぐ回る」のがNGか</h3>
+
+  <p>断られた事実は、信用情報に残らないものの、<strong>銀行間の暗黙の情報共有</strong>はある程度存在します。とくに地域の地銀同士・信金同士では、同じエリアの担当者は顔見知りであることが多く、「あの会社が複数行で同時に動いている」という情報が共有されることがあります。</p>
+
+  <p>そして何より、<strong>断られた原因が解消されないまま申請しても、結果は同じ</strong>です。次の銀行も同じ財務諸表を見て、同じ判断をするだけ。たとえば、自己資本比率の低さや、債務超過の懸念、業績悪化トレンドといった構造的な問題は、銀行を変えても解決しません。</p>
+
+  <h3>NG② なぜ「顧問税理士・会計士に相談」がNGか</h3>
+
+  <p>もちろん相談自体は無駄ではありません。ただし、<strong>顧問税理士・会計士の多くは「税務」のプロであって、「銀行交渉」のプロではありません</strong>。彼らから返ってくる回答は、たいてい「決算書を整える」「節税の見直し」といった、銀行交渉のスピード感とは違う方向のアドバイスになりがちです。</p>
+
+  <p>本当に必要なのは、<strong>銀行員がこの会社をどう評価しているか</strong>を読み解き、その評価を変える戦略を持っている人の助言です。</p>
+
+  <h3>NG③ なぜ「いきなり経費削減」がNGか</h3>
+
+  <p>経費削減・人員見直しは、<strong>時間がかかる打ち手</strong>です。効果が決算に反映されるのは早くて半年後。一方で、目の前のキャッシュ枯渇は3ヶ月後に迫っていることが多く、時間軸が合いません。</p>
+
+  <p>さらに悪いのは、人員見直しの噂が社内外に漏れて、<strong>取引先からの信用がさらに低下</strong>することです。融資が受けにくい状態に追い打ちがかかります。</p>
+
+  <h2>2. 断られた直後72時間で取るべき、正しい3つの行動</h2>
+
+  <p>では、何をすべきか。順序が大事です。</p>
+
+  <div class="do-box">
+    <div class="do-box-title">正しい3アクション</div>
+    <ol>
+      <li><strong>アクション①</strong>: 断られた「本当の理由」を聞き出す</li>
+      <li><strong>アクション②</strong>: 自社の財務指標を「銀行視点」で再評価する</li>
+      <li><strong>アクション③</strong>: 次の3手を「順番」と「時間軸」で設計する</li>
+    </ol>
+  </div>
+
+  <h3>アクション① 断られた「本当の理由」を聞き出す</h3>
+
+  <p>銀行員は基本的に、断る理由をハッキリ言ってくれません。「総合的判断で」「本部の判断で」といった曖昧な表現で終わります。これは、断る理由を明示すると、その後のクレームや交渉が長引くからです。</p>
+
+  <p>しかし、本当の理由が分からないと、次の対策が打てません。聞き出すための切り口は3つあります。</p>
+
+  <ul>
+    <li><strong>「次の決算で何を改善すれば、再申請の可能性がありますか?」</strong> と未来形で聞く</li>
+    <li><strong>「他行から借りる場合、どの指標がネックになりそうですか?」</strong> と第三者視点で聞く</li>
+    <li><strong>「同業他社で似た規模の会社の融資はどうしていますか?」</strong> と相場感を聞く</li>
+  </ul>
+
+  <p>これらの聞き方なら、銀行員は答えやすくなります。本当のNG理由が見えてくれば、次に打つべき手が決まります。</p>
+
+  <h3>アクション② 自社の財務指標を「銀行視点」で再評価する</h3>
+
+  <p>銀行は、決算書を独自の指標で評価しています。代表的なのは以下です。</p>
+
+  <ul>
+    <li><strong>債務償還年数</strong>(借入総額 ÷ キャッシュフロー) ── 10年以下が目安</li>
+    <li><strong>自己資本比率</strong> ── 中小企業で20%以上が「安全圏」</li>
+    <li><strong>有利子負債依存度</strong>(借入総額 ÷ 売上高)── 業種により異なるが目安あり</li>
+    <li><strong>営業利益率</strong>のトレンド ── 単月ではなく3年推移</li>
+    <li><strong>債務超過の有無</strong> ── あれば最重要懸念</li>
+  </ul>
+
+  <p>これらを「自社の現状値」で計算してみると、銀行が「断った理由」がほぼ見えてきます。<strong>どの指標が、どの基準を下回っているか</strong>を特定することが、次の交渉戦略の出発点です。</p>
+
+  <h3>アクション③ 次の3手を「順番」と「時間軸」で設計する</h3>
+
+  <p>銀行融資の選択肢は、実は1つではありません。順序を変えるだけで、結果が大きく変わります。</p>
+
+  <ul>
+    <li><strong>短期(1ヶ月以内)</strong>: 既存銀行へ「条件変更(リスケ)」の打診 / 補助金・助成金の申請準備</li>
+    <li><strong>中期(2-3ヶ月)</strong>: 他行への新規借入(プロパー)申請 / 借換による金利・期間の組み替え</li>
+    <li><strong>長期(3-6ヶ月)</strong>: 信用保証協会枠の活用 / 制度融資(自治体)の検討</li>
+  </ul>
+
+  <p>重要なのは、これらを<strong>「どの順番で・いつまでに動くか」</strong>を、紙1枚で見える化することです。「いつかやる」では資金繰りは間に合いません。</p>
+
+  <h2>3. 実際の事例: 製造業/年商3億 / 3行目で融資実行</h2>
+
+  <div class="case-card">
+    <div class="case-meta">CASE STUDY</div>
+    <h4>製造業 / 年商3億 / 2行に断られた後、3行目で実行</h4>
+    <p><strong>状況</strong>: メインバンクと2行目の地銀から立て続けに追加融資を断られた製造業社。代表交代直後で、前代表時の借入が重く、月次キャッシュは2ヶ月分まで減少。社内では「もう打つ手がない」というムードが広がっていた。</p>
+    <p><strong>BEYONDの動き</strong>:</p>
+    <ul>
+      <li>断られた本当の理由を、銀行員と再面談して特定 → 債務償還年数が11年で、銀行の基準10年を超えていた</li>
+      <li>キャッシュフロー改善の現実的なシナリオを2案作成 (経費再構成 + リスケ条件交渉)</li>
+      <li>3行目(別エリアの信金) への融資申請を、改善計画書とセットで提出</li>
+    </ul>
+    <div class="case-result">
+      → <strong>結果</strong>: 申請から4週間で<strong>3行目で融資実行</strong>。並行して既存2行とリスケ合意、補助金<strong>採択</strong>。月次キャッシュフロー黒字化まで4ヶ月。
+    </div>
+  </div>
+
+  <h2>4. BEYOND Holdings の解き方 (FLOWサービス)</h2>
+
+  <p>BEYOND Holdingsは、自分たち自身が中小企業を複数経営しながら、銀行交渉・リスケ・借換・補助金活用を<strong>当事者として何度も繰り返してきた集まり</strong>です。机上の空論ではなく、実際にやってきたことだけをお渡しします。</p>
+
+  <p>FLOWサービスでは、以下のような<strong>具体的な伴走</strong>を行います。</p>
+
+  <ul>
+    <li><strong>現状の見える化</strong>: 試算表が整っていない場合は、数字を作るところから着手</li>
+    <li><strong>銀行交渉の戦略設計</strong>: どの銀行に・何を・どの順で話すかを設計</li>
+    <li><strong>銀行訪問への同席</strong>: 資料作成と、必要に応じた同席</li>
+    <li><strong>補助金・助成金の戦略活用</strong>: 自社に効く制度の選定と申請伴走</li>
+    <li><strong>月次キャッシュ管理の仕組み化</strong>: 社長が10分で読める資金繰り表の定着</li>
+  </ul>
+
+  <p>銀行に断られた直後は、時間との戦いです。<strong>お問い合わせから1時間以内に折り返し</strong>、<strong>3営業日以内に初回ヒアリング</strong>、その<strong>2週間後には最初の打ち手</strong>を動かします。</p>
+
+  <div class="cta-block">
+    <h2>次の一手、一緒に決めましょう。</h2>
+    <p>まずは1分の財務体力チェック、もしくは無料ヒアリングから。</p>
+    <div class="cta-btns">
+      <a href="../../check/" class="cta-btn-secondary">🩺 1分で財務体力をチェックする</a>
+      <a href="../../apply/" class="cta-btn-primary">✉️ ヒアリングを申し込む →</a>
+    </div>
+  </div>
+
+  <div class="related">
+    <div class="related-title">RELATED ARTICLES</div>
+    <ul>
+      <li><a href="#">リスケ(条件変更)の正しい切り出し方 — 中小企業の経営者が知っておくべき7つのこと</a> <span style="color:var(--text-soft); font-size:12px;">(準備中)</span></li>
+      <li><a href="#">代表交代直後の100日でやるべき、財務まわりの優先順位</a> <span style="color:var(--text-soft); font-size:12px;">(準備中)</span></li>
+      <li><a href="#">顧問税理士・会計士が「動かない」と感じた時の、見直し基準</a> <span style="color:var(--text-soft); font-size:12px;">(準備中)</span></li>
+    </ul>
+  </div>
+
+</article>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <strong style="color:#fff; font-size:14px;">BEYOND FLOW</strong> ─ お金の流れを、止めない。<br>
+      中小企業の資金繰り・銀行交渉・補助金活用に、即動く伴走サービス。
+    </div>
+    <div class="footer-bottom">
+      © 2026 BEYOND Holdings 株式会社 ─ <a href="../../">FLOW トップ</a> ─ <a href="https://www.beyond-holdings.co.jp/">運営会社</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
