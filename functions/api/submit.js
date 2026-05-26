@@ -2,14 +2,6 @@
  * FLOW ヒアリング申込フォーム受付
  * - POST /api/submit
  * - 申込内容を LINE WORKS Bot で松浦さんに即時通知 (DM)
- *
- * Required env vars (Pages > Settings > Environment variables / Secrets):
- *   LINE_WORKS_CLIENT_ID
- *   LINE_WORKS_CLIENT_SECRET
- *   LINE_WORKS_SERVICE_ACCOUNT
- *   LINE_WORKS_BOT_ID
- *   LINE_WORKS_MATSUURA_ID
- *   LINE_WORKS_PRIVATE_KEY  (PEM全文・複数行)
  */
 
 import { SignJWT, importPKCS8 } from 'jose';
@@ -19,15 +11,42 @@ const API_BASE = 'https://www.worksapis.com/v1.0';
 
 export async function onRequestPost(context) {
   const { env, request } = context;
-
-  // CORS (同一オリジンの想定だが保険)
   const cors = {
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json; charset=utf-8',
   };
 
   try {
-    const data = await request.json();
+    // env vars チェック
+    const requiredEnv = [
+      'LINE_WORKS_CLIENT_ID', 'LINE_WORKS_CLIENT_SECRET',
+      'LINE_WORKS_SERVICE_ACCOUNT', 'LINE_WORKS_BOT_ID',
+      'LINE_WORKS_NOTIFY_CHANNEL_ID', 'LINE_WORKS_PRIVATE_KEY',
+    ];
+    const missing = requiredEnv.filter((k) => !env[k]);
+    if (missing.length > 0) {
+      return new Response(
+        JSON.stringify({ ok: false, error: `Missing env vars: ${missing.join(', ')}` }),
+        { status: 500, headers: cors }
+      );
+    }
+
+    // body parse (text → JSON.parse でより安全に)
+    const bodyText = await request.text();
+    let data;
+    try {
+      data = JSON.parse(bodyText);
+    } catch (e) {
+      return new Response(
+        JSON.stringify({
+          ok: false,
+          error: `Invalid JSON body: ${e.message}`,
+          bodyLength: bodyText.length,
+          bodyStart: bodyText.slice(0, 100),
+        }),
+        { status: 400, headers: cors }
+      );
+    }
 
     // 必須チェック
     if (!data.name || !data.company || !data.contact) {
@@ -47,12 +66,11 @@ export async function onRequestPost(context) {
       minute: '2-digit',
     }).format(new Date());
 
-    // 通知メッセージ生成
     const msg = formatNotification(data, jstNow);
 
-    // LINE WORKS Bot に DM 送信
+    // LINE WORKS Bot に チャネル送信 (FLOW申込通知 専用チャネル)
     const accessToken = await getAccessToken(env);
-    await sendDirectMessage(env, accessToken, env.LINE_WORKS_MATSUURA_ID, msg);
+    await sendChannelMessage(env, accessToken, env.LINE_WORKS_NOTIFY_CHANNEL_ID, msg);
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
@@ -61,13 +79,16 @@ export async function onRequestPost(context) {
   } catch (err) {
     console.error('[submit] error:', err.message, err.stack);
     return new Response(
-      JSON.stringify({ ok: false, error: err.message || 'Internal error' }),
+      JSON.stringify({
+        ok: false,
+        error: err.message || 'Internal error',
+        name: err.name,
+      }),
       { status: 500, headers: cors }
     );
   }
 }
 
-// プリフライト用
 export async function onRequestOptions() {
   return new Response(null, {
     headers: {
@@ -78,24 +99,31 @@ export async function onRequestOptions() {
   });
 }
 
-/**
- * Service Account JWT → Access Token
- */
 async function getAccessToken(env) {
   const privateKeyPem = env.LINE_WORKS_PRIVATE_KEY;
-  if (!privateKeyPem) {
-    throw new Error('LINE_WORKS_PRIVATE_KEY env var is not set');
+
+  let privateKey;
+  try {
+    privateKey = await importPKCS8(privateKeyPem, 'RS256');
+  } catch (e) {
+    throw new Error(
+      `importPKCS8 failed: ${e.message} | pem.length=${privateKeyPem.length} | starts="${privateKeyPem.slice(0, 40)}"`
+    );
   }
-  const privateKey = await importPKCS8(privateKeyPem, 'RS256');
   const now = Math.floor(Date.now() / 1000);
 
-  const assertion = await new SignJWT({})
-    .setProtectedHeader({ alg: 'RS256' })
-    .setIssuer(env.LINE_WORKS_CLIENT_ID)
-    .setSubject(env.LINE_WORKS_SERVICE_ACCOUNT)
-    .setIssuedAt(now)
-    .setExpirationTime(now + 3600)
-    .sign(privateKey);
+  let assertion;
+  try {
+    assertion = await new SignJWT({})
+      .setProtectedHeader({ alg: 'RS256' })
+      .setIssuer(env.LINE_WORKS_CLIENT_ID)
+      .setSubject(env.LINE_WORKS_SERVICE_ACCOUNT)
+      .setIssuedAt(now)
+      .setExpirationTime(now + 3600)
+      .sign(privateKey);
+  } catch (e) {
+    throw new Error(`SignJWT failed: ${e.message}`);
+  }
 
   const params = new URLSearchParams({
     assertion,
@@ -110,21 +138,26 @@ async function getAccessToken(env) {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: params,
   });
+  const text = await res.text();
   if (!res.ok) {
-    const text = await res.text();
-    throw new Error(`Token request failed: ${res.status} ${text}`);
+    throw new Error(`Token request failed: ${res.status} body=${text.slice(0, 300)}`);
   }
-  const json = await res.json();
+  let json;
+  try {
+    json = JSON.parse(text);
+  } catch (e) {
+    throw new Error(`Token response not JSON: status=${res.status} body=${text.slice(0, 300)}`);
+  }
+  if (!json.access_token) {
+    throw new Error(`No access_token in response: ${text.slice(0, 300)}`);
+  }
   return json.access_token;
 }
 
-/**
- * LINE WORKS Bot - 個人DM 送信
- */
-async function sendDirectMessage(env, token, userId, text) {
+async function sendChannelMessage(env, token, channelId, text) {
   const body = { content: { type: 'text', text } };
   const res = await fetch(
-    `${API_BASE}/bots/${env.LINE_WORKS_BOT_ID}/users/${userId}/messages`,
+    `${API_BASE}/bots/${env.LINE_WORKS_BOT_ID}/channels/${channelId}/messages`,
     {
       method: 'POST',
       headers: {
@@ -136,14 +169,11 @@ async function sendDirectMessage(env, token, userId, text) {
   );
   if (!res.ok) {
     const txt = await res.text();
-    throw new Error(`sendDirectMessage failed: ${res.status} ${txt}`);
+    throw new Error(`sendChannelMessage failed: ${res.status} ${txt.slice(0, 300)}`);
   }
-  return res.json();
+  return { ok: true, status: res.status };
 }
 
-/**
- * 通知メッセージ整形
- */
 function formatNotification(d, jstNow) {
   const urgencyEmoji = {
     '今週中に動きたい (緊急)': '🚨🚨🚨',
