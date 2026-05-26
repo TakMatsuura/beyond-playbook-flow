@@ -7,8 +7,15 @@
 
 const COUNTED_HOST_PATTERN = /^(flow\.beyond-holdings\.co\.jp|flow-beyond-playbook\.pages\.dev)$/;
 
+// クローラー対象のシステムパス (実在しないがクローラが定期的に叩く)
+const EXCLUDE_PATHS = new Set([
+  '/ads.txt', '/app-ads.txt', '/sellers.json',
+  '/robots.txt', '/sitemap.xml',
+  '/.well-known/security.txt',
+  '/wp-login.php', '/wp-admin/', '/.env',
+]);
+
 export async function onRequest(context) {
-  // 先にレスポンス取得 (失敗時はカウントスキップ)
   const response = await context.next();
 
   try {
@@ -18,6 +25,15 @@ export async function onRequest(context) {
     const method = context.request.method;
     const userAgent = context.request.headers.get('user-agent') || '';
     const ip = context.request.headers.get('cf-connecting-ip') || 'unknown';
+    const cookieHeader = context.request.headers.get('cookie') || '';
+
+    // ★関係者用 Cookie オプトアウト★ : ?internal=1 でCookie発行 → 以後カウント除外
+    if (url.searchParams.get('internal') === '1') {
+      const newHeaders = new Headers(response.headers);
+      // 1年間有効・httpOnly・SameSite=Lax
+      newHeaders.append('Set-Cookie', `flow_internal=1; Path=/; Max-Age=${365*24*60*60}; SameSite=Lax`);
+      return new Response(response.body, { status: response.status, headers: newHeaders });
+    }
 
     // カウント対象外を弾く
     if (method !== 'GET') return response;
@@ -26,16 +42,19 @@ export async function onRequest(context) {
     if (path.startsWith('/assets/')) return response;
     if (path.includes('/favicon')) return response;
     if (path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.svg') || path.endsWith('.css') || path.endsWith('.js')) return response;
-    // 主要ボット弾き
-    if (/bot|crawler|spider|monitor|preview|fetch|wget|curl|httpie/i.test(userAgent)) return response;
+    if (EXCLUDE_PATHS.has(path)) return response;
+    if (path.startsWith('/wp-')) return response;
+    // 主要ボット弾き (User-Agent判定)
+    if (/bot|crawler|spider|monitor|preview|fetch|wget|curl|httpie|scrap|index|axios|python/i.test(userAgent)) return response;
+    // ★関係者cookie★ がある場合除外
+    if (cookieHeader.includes('flow_internal=1')) return response;
 
     // JST 日付キー
     const jstDate = new Intl.DateTimeFormat('en-CA', {
       timeZone: 'Asia/Tokyo',
       year: 'numeric', month: '2-digit', day: '2-digit',
-    }).format(new Date()); // "2026-05-26"
+    }).format(new Date());
 
-    // カウント (waitUntilで応答を遅らせない)
     context.waitUntil(recordHit(context.env, jstDate, path, ip));
   } catch (e) {
     console.error('[_middleware] hit recording error:', e.message);
