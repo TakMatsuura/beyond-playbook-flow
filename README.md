@@ -1,67 +1,110 @@
 # FLOW ── お金の流れを、止めない。
 
-BEYOND Playbook の最初の1サイト。中小企業の資金繰り・銀行交渉・補助金活用に伴走するサービスのLP。
+BEYOND Playbook の第1サイト。中小企業の資金繰り・銀行交渉・補助金活用に伴走するサービスのLP。
 
-- **ドメイン (予定)**: https://flow.beyond-holdings.co.jp
-- **位置付け**: BEYOND Playbook 9サイト中、最初に作る型
-- **技術スタック**: Vanilla HTML + Cloudflare Pages + D1 + LINE WORKS通知 (お助けコンシェルジュと同構成)
+- **本番URL**: https://flow.beyond-holdings.co.jp
+- **ステージング**: https://flow-beyond-playbook.pages.dev
+- **位置付け**: BEYOND Playbook 9サイト中、最初の本番運用サイト
+- **技術スタック**: Vanilla HTML + Cloudflare Pages + KV (FLOW_ANALYTICS) + Pages Functions + LINE WORKS Bot
 
 ## ディレクトリ構成
 
 ```
-flow/
-├── index.html           # メインLP (完成)
-├── check/index.html     # 診断ツール「1分でできる、財務体力チェック」(TODO)
-├── articles/            # キラー記事5本 (TODO)
-├── admin/index.html     # 管理ダッシュボード (TODO)
-├── assets/              # ロゴ・写真・CSS等
-├── functions/api/       # Cloudflare Pages Functions
-│   ├── submit.js        # フォーム受付 (TODO)
-│   ├── check-result.js  # 診断結果保存 (TODO)
-│   └── daily-report.js  # 日次サマリ通知 (TODO)
-└── schema.sql           # D1 スキーマ (TODO)
+beyond-playbook-flow/
+├── index.html                          # メインLP (12セクション)
+├── 404.html                            # 404エラーページ
+├── check/index.html                    # 1分財務体力チェック (5問)
+├── apply/index.html                    # ヒアリング申込フォーム
+├── privacy/index.html                  # プライバシーポリシー
+├── articles/
+│   ├── index.html                      # 記事一覧 (6本)
+│   ├── bank-loan-rejected/
+│   ├── rescheduling-before-bs-pl/
+│   ├── representative-handover-100days/
+│   ├── tax-accountant-relationship/
+│   ├── subsidies-2026/
+│   └── banker-3-numbers/               # 6本目 (2026-05-26 追加)
+├── admin/index.html                    # 管理ダッシュボード (Basic Auth)
+├── assets/
+│   ├── beyond_logo.png
+│   ├── favicon.png
+│   └── og-image.svg                    # SNSシェア用OGP画像 (1200x630)
+├── functions/
+│   ├── _middleware.js                  # KVアクセスカウント + Basic Auth (admin/)
+│   └── api/
+│       ├── submit.js                   # フォーム受付→LINE WORKS DM
+│       ├── newsletter.js               # メルマガ登録 (中間CV)
+│       ├── daily-report.js             # 日次レポート (GH Actions cron 7時)
+│       ├── weekly-report.js            # 週次レポート (GH Actions cron 月7時)
+│       └── admin-stats.js              # 管理ダッシュボード用JSON
+├── .github/workflows/
+│   ├── daily-report.yml                # 毎日 22:00 UTC = 7:00 JST
+│   └── weekly-report.yml               # 月曜 22:00 UTC = 月曜 7:00 JST
+├── robots.txt
+├── sitemap.xml
+├── wrangler.toml
+└── package.json
 ```
 
-## ローカルで確認する方法
+## Cloudflare Pages 環境変数 (Secrets)
 
-エクスプローラーから `index.html` をダブルクリック (Chrome/Edge で開く)。
-全セクション・全コピーが入った状態で見れます。
+| Key | 用途 |
+|---|---|
+| `LINE_WORKS_CLIENT_ID` | LINE WORKS App Client ID |
+| `LINE_WORKS_CLIENT_SECRET` | LINE WORKS App Client Secret |
+| `LINE_WORKS_SERVICE_ACCOUNT` | LINE WORKS Service Account |
+| `LINE_WORKS_BOT_ID` | `12320538` (BEYOND Playbook Bot) |
+| `LINE_WORKS_PRIVATE_KEY` | Service Account 用 PKCS8 鍵 |
+| `LINE_WORKS_MATSUURA_ID` | `t-matsuura@beyond-holdings` |
+| `DAILY_REPORT_KEY` | 日次/週次レポート呼び出し認証 |
+| **`ADMIN_USER`** | **★追加要★ /admin/ Basic認証 ユーザ名** |
+| **`ADMIN_PASS`** | **★追加要★ /admin/ Basic認証 パスワード** |
 
-## サイト構造 (LP全12セクション)
+KV Binding: `FLOW_ANALYTICS` (id: `d5f6a0a06f0e4682a865a475d12a0395`)
 
-| # | セクション | 内容 |
-|---|---|---|
-| 1 | ヒーロー | FLOW + お金の流れを止めない + CTA3つ |
-| 2 | 次の打ち手、決まっていますか? | 共感 (論点リスト10個) |
-| 3 | 数字で見るBEYOND | 7社/85名/2023 |
-| 4 | FLOWの解き方5つ | 現状見える化〜キャッシュ管理 |
-| 5 | 事例 / 現在のご相談 | 実例1件 + 進行中3件 |
-| 6 | なぜBEYOND | 3つの理由 + スピード比較表 |
-| 7 | 料金 | ヒアリング無料 / Kickoff有料 / お役立てない場合 |
-| 8 | 代表メッセージ | 松浦さん顔写真 + テキスト |
-| 9 | こんな経営者と組みたい / お断り | フィルター |
-| 10 | FAQ | 7問 |
-| 11 | 大CTA再掲 | 「まず話しましょう」 |
-| 12 | フッター | 関連サイト・運営会社 |
+## 解析・通知
 
-+ モバイル下部固定 CTA (電話/LINE/申込)
+- **GA4**: G-PJY2SKCX2L (全HTMLに `gtag.js` 埋め込み済)
+- **Search Console**: メタタグ認証 + sitemap.xml 登録済
+- **CTAクリックトラッキング**: `data-track` 属性 + 自動検出 (apply/, check/, tel:, mailto:, external link)
+- **スクロール深度**: 25/50/75/100% 発火
+- **アクセスKV集計**: middleware で日次 PV/UU/path 集計 (?internal=1 で関係者cookie除外)
+- **日次レポート**: 毎朝 7:00 JST に松浦さんへ LINE WORKS DM
+- **週次レポート**: 毎週月曜 7:00 JST に前週比サマリを LINE WORKS DM
+- **管理ダッシュボード**: https://flow.beyond-holdings.co.jp/admin/ (Basic Auth)
 
-## まだやってないこと (TODO)
+## 構造化データ (JSON-LD)
 
-- [ ] 診断ツール「1分でできる、財務体力チェック」5問の実装
-- [ ] キラー記事5本の実装
-- [ ] フォーム受付 (Cloudflare Pages Functions + D1)
-- [ ] LINE WORKS Bot 通知 (松浦さん即時アラート)
-- [ ] 管理ダッシュボード (日次サマリ確認)
-- [ ] Cloudflare Pages デプロイ
-- [ ] サブドメイン flow.beyond-holdings.co.jp 設定
-- [ ] GA4 / Microsoft Clarity 接続
-- [ ] 松浦さん顔写真・BEYONDロゴ assets/ へコピー
-- [ ] 事例1件の数字 (○○の部分) 確定
+- **トップ**: Organization + WebSite + FAQPage
+- **記事**: Article × 6本
+- **記事一覧**: ItemList
+- **診断**: WebApplication
+- **申込**: ContactPage
+- **プライバシー**: WebPage
 
-## 仮置きの数字 (要確定)
+## ローカル確認
 
-サイト内の以下は仮置きです:
-- 事例1: 「年商○億」「借入○○千万」「補助金○○万」 → 松浦さん側で実数値確定
-- 電話番号: 080-4145-0391 (Strategy Summary記載・代表番号と要確認)
-- フッター TEL: 03-6820-9321 (本社番号)
+```bash
+# ブラウザで開く
+explorer index.html
+
+# wrangler でローカル実行 (Functions 含む)
+npx wrangler pages dev .
+```
+
+## デプロイ
+
+```bash
+# CIなし・直接デプロイ (commit messageはASCIIで)
+npx wrangler pages deploy . --project-name=flow-beyond-playbook --commit-message="deploy"
+```
+
+## 9サイト戦略 (Phase 2以降)
+
+FLOW (財務) の反応を見て、次に着手するサイトを決定。テンプレ化したベースを使って2サイト目以降は1日で立ち上げ可能。
+
+- SEED (新規事業立ち上げ)
+- MAGNET (集客)
+- COMPASS (戦略)
+- TRIBE (組織)
+- 他5サイト

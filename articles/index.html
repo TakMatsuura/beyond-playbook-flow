@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="FLOW コラム一覧。中小企業の資金繰り・事業構造の見直し・銀行交渉・補助金活用に役立つ実践記事を公開しています。BEYOND Holdingsの伴走思想とともに。">
+<meta property="og:image" content="https://flow.beyond-holdings.co.jp/assets/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://flow.beyond-holdings.co.jp/assets/og-image.svg">
 <meta name="google-site-verification" content="K8GGOtOPGmibI8WbGJl34VhjA4uXMvbQb6e1H2q9bCs" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJY2SKCX2L"></script>
@@ -53,6 +58,21 @@ footer a:hover { color: var(--gold-bright); }
   .article-card { padding: 24px; }
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "FLOW コラム一覧",
+  "itemListElement": [
+    { "@type":"ListItem", "position":1, "url":"https://flow.beyond-holdings.co.jp/articles/bank-loan-rejected/", "name":"「銀行に追加融資を断られた」の前後で、社長が本当に見るべき3つのこと" },
+    { "@type":"ListItem", "position":2, "url":"https://flow.beyond-holdings.co.jp/articles/rescheduling-before-bs-pl/", "name":"リスケを切り出す前に、社長がBS/PLで確認すべき7つのこと" },
+    { "@type":"ListItem", "position":3, "url":"https://flow.beyond-holdings.co.jp/articles/representative-handover-100days/", "name":"代表交代直後の100日でやるべき、事業構造の棚卸し" },
+    { "@type":"ListItem", "position":4, "url":"https://flow.beyond-holdings.co.jp/articles/tax-accountant-relationship/", "name":"顧問税理士・会計士と上手く付き合うコツと、見直しのタイミング" },
+    { "@type":"ListItem", "position":5, "url":"https://flow.beyond-holdings.co.jp/articles/subsidies-2026/", "name":"2026年最新|中小企業が押さえるべき補助金・助成金トップ5" },
+    { "@type":"ListItem", "position":6, "url":"https://flow.beyond-holdings.co.jp/articles/banker-3-numbers/", "name":"銀行員が決算書で最初に見る3つの数字 ─ 社長も知っておくべき財務指標" }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -75,6 +95,15 @@ footer a:hover { color: var(--gold-bright); }
   </p>
 
   <div class="article-list">
+
+    <a href="banker-3-numbers/" class="article-card">
+      <div class="article-date">2026.05.26 · NEW</div>
+      <div class="article-title">銀行員が決算書で最初に見る3つの数字 ─ 社長も知っておくべき財務指標</div>
+      <div class="article-excerpt">
+        銀行員は決算書を渡されたとき、最初に見る数字が決まっている。借入返済原資・自己資本比率・利益率3点セットの推移。社長自身が経営判断にも使えるBEYOND視点の実務解説。
+      </div>
+      <span class="read-more">続きを読む →</span>
+    </a>
 
     <a href="bank-loan-rejected/" class="article-card">
       <div class="article-date">2026.05.26</div>
@@ -128,5 +157,48 @@ footer a:hover { color: var(--gold-bright); }
   © 2026 BEYOND Holdings 株式会社 ─ <a href="../">FLOW トップ</a>
 </footer>
 
+<script>
+// GA4 イベントトラッキング (CTAクリック・スクロール深度)
+(function(){
+  if (typeof gtag !== 'function') return;
+  // CTAクリック (data-track属性ベース)
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-track]');
+    if (!el) {
+      // フォールバック: 自動検出 (apply/, check/ への遷移)
+      var a = e.target.closest('a');
+      if (a) {
+        var href = a.getAttribute('href') || '';
+        if (/apply\/?$/.test(href) || /apply\//.test(href)) gtag('event','cta_apply_click',{link_url:href});
+        else if (/check\/?$/.test(href) || /check\//.test(href)) gtag('event','cta_check_click',{link_url:href});
+        else if (/^tel:/.test(href)) gtag('event','tel_click',{link_url:href});
+        else if (/^mailto:/.test(href)) gtag('event','mailto_click',{link_url:href});
+        else if (/^https?:/.test(href) && !/flow\.beyond-holdings/.test(href)) gtag('event','external_click',{link_url:href});
+      }
+      return;
+    }
+    var name = el.getAttribute('data-track');
+    var params = {};
+    Array.from(el.attributes).forEach(function(a){
+      if (a.name.indexOf('data-track-') === 0 && a.name !== 'data-track') params[a.name.slice(11).replace(/-/g,'_')] = a.value;
+    });
+    gtag('event', name, params);
+  });
+  // スクロール深度 (25/50/75/100)
+  var fired = {};
+  function onScroll(){
+    var h = document.documentElement;
+    var sc = (h.scrollTop || document.body.scrollTop);
+    var sh = (h.scrollHeight || document.body.scrollHeight) - h.clientHeight;
+    if (sh <= 0) return;
+    var pct = Math.round((sc / sh) * 100);
+    [25,50,75,100].forEach(function(t){
+      if (pct >= t && !fired[t]) { fired[t] = true; gtag('event','scroll_depth',{percent:t}); }
+    });
+  }
+  var to = null;
+  window.addEventListener('scroll', function(){ if (to) return; to = setTimeout(function(){ to = null; onScroll(); }, 300); }, {passive:true});
+})();
+</script>
 </body>
 </html>

@@ -9,6 +9,11 @@
 <meta property="og:description" content="中小企業の資金繰り・銀行交渉・補助金を、即動いて、即返して、即決める。1時間以内に折り返します。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://flow.beyond-holdings.co.jp/">
+<meta property="og:image" content="https://flow.beyond-holdings.co.jp/assets/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://flow.beyond-holdings.co.jp/assets/og-image.svg">
 <meta name="google-site-verification" content="K8GGOtOPGmibI8WbGJl34VhjA4uXMvbQb6e1H2q9bCs" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJY2SKCX2L"></script>
@@ -650,6 +655,43 @@ footer { background: #0a0e1a; color: rgba(255,255,255,0.7); padding: 56px 0 32px
   body { padding-bottom: 80px; }
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BEYOND Holdings 株式会社",
+  "url": "https://flow.beyond-holdings.co.jp/",
+  "logo": "https://flow.beyond-holdings.co.jp/assets/beyond_logo.png",
+  "description": "中小企業の資金繰り・銀行交渉・補助金・事業構造の見直しに、即動いて、即返して、即決める伴走サービス FLOW を提供。",
+  "address": { "@type": "PostalAddress", "streetAddress": "尾山台3-9-1", "addressLocality": "世田谷区", "addressRegion": "東京都", "postalCode": "158-0086", "addressCountry": "JP" },
+  "telephone": "+81-3-6820-9321",
+  "sameAs": ["https://www.beyond-holdings.co.jp/"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "FLOW｜BEYOND Playbook",
+  "url": "https://flow.beyond-holdings.co.jp/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://flow.beyond-holdings.co.jp/articles/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "対応スピードはどのくらいですか?", "acceptedAnswer": { "@type": "Answer", "text": "お問い合わせから1時間以内に折り返し、3営業日以内に初回ヒアリング、その2週間後には最初の打ち手を動かします。" }},
+    { "@type": "Question", "name": "契約期間や解約条件はありますか?", "acceptedAnswer": { "@type": "Answer", "text": "契約形態によりますが、基本的に解約条件は柔軟に設計します。むしろ、初回ヒアリングで合わなければ、こちらからお断りすることもあります。" }},
+    { "@type": "Question", "name": "料金体系はどうなっていますか?", "acceptedAnswer": { "@type": "Answer", "text": "ヒアリングまでは無料、Kickoff以降は有料です。具体的な金額はヒアリング後、明確にご提示します。事前の電話・LINEで「ざっくりレンジ感」をお伝えすることも可能です。" }}
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -1108,6 +1150,60 @@ footer { background: #0a0e1a; color: rgba(255,255,255,0.7); padding: 56px 0 32px
   </div>
 </section>
 
+<!-- ============ ⑩.5 メルマガ (軽い中間CV) ============ -->
+<section style="background:#f7f6f3; padding:64px 24px; border-top:1px solid #e5e3dc; border-bottom:1px solid #e5e3dc;">
+  <div class="container-narrow" style="max-width:680px; margin:0 auto; text-align:center;">
+    <div class="section-label" style="color:#a07d2c;">NEWSLETTER</div>
+    <h2 style="font-size:clamp(20px,3vw,26px); font-weight:900; line-height:1.5; margin:16px 0 12px; color:#0a1e3d;">いきなりヒアリングは早い、という方へ。</h2>
+    <p style="font-size:15px; line-height:1.95; color:#555; margin-bottom:32px;">
+      事業構造の見直し・銀行交渉・補助金活用の実践レポートを、<br>
+      不定期でメールにてお送りします。 ★営業メールは送りません★。
+    </p>
+    <form id="newsletter-form" style="display:flex; gap:8px; max-width:480px; margin:0 auto; flex-wrap:wrap;">
+      <input type="email" id="newsletter-email" required placeholder="your@example.com" autocomplete="email"
+        style="flex:1; min-width:200px; padding:14px 18px; border:1px solid #cdc8b8; border-radius:6px; font-size:15px; font-family:inherit; background:#fff;">
+      <button type="submit" data-track="cta_newsletter_submit"
+        style="padding:14px 24px; border:none; background:linear-gradient(135deg, #0a1e3d, #050d1f); color:#fff; border-radius:6px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit; transition:transform 0.2s;">
+        📬 登録する
+      </button>
+    </form>
+    <p id="newsletter-msg" style="margin-top:16px; font-size:13px; min-height:20px;"></p>
+    <p style="margin-top:8px; font-size:11px; color:#999;">
+      ご登録いただいたメールアドレスは、 <a href="privacy/" style="color:#555;">プライバシーポリシー</a> に従って取り扱います。
+    </p>
+  </div>
+</section>
+<script>
+document.getElementById('newsletter-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var btn = this.querySelector('button');
+  var msg = document.getElementById('newsletter-msg');
+  var email = document.getElementById('newsletter-email').value.trim();
+  btn.disabled = true; btn.textContent = '送信中...';
+  msg.textContent = ''; msg.style.color = '#555';
+  try {
+    var res = await fetch('/api/newsletter', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ email: email, source: 'top_inline' })
+    });
+    var data = await res.json().catch(function(){ return {}; });
+    if (res.ok && data.ok) {
+      msg.textContent = '✓ 登録ありがとうございます。続報をお送りします。';
+      msg.style.color = '#2d6a3e';
+      document.getElementById('newsletter-email').value = '';
+      if (typeof gtag === 'function') gtag('event', 'newsletter_submit_success', { source: 'top_inline' });
+    } else {
+      msg.textContent = '✗ ' + (data.error || '登録に失敗しました。少し時間を置いてお試しください。');
+      msg.style.color = '#8b1c1c';
+    }
+  } catch (err) {
+    msg.textContent = '✗ 通信エラーが発生しました。';
+    msg.style.color = '#8b1c1c';
+  }
+  btn.disabled = false; btn.textContent = '📬 登録する';
+});
+</script>
+
 <!-- ============ ⑪ 大CTA再掲 ============ -->
 <section class="final-cta" id="cta">
   <div class="container-narrow">
@@ -1230,6 +1326,49 @@ document.querySelectorAll('.fade-in').forEach(el => fadeObs.observe(el));
 window.addEventListener('load', () => {
   document.body.classList.add('loaded');
 });
+</script>
+<script>
+// GA4 イベントトラッキング (CTAクリック・スクロール深度)
+(function(){
+  if (typeof gtag !== 'function') return;
+  // CTAクリック (data-track属性ベース)
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-track]');
+    if (!el) {
+      // フォールバック: 自動検出 (apply/, check/ への遷移)
+      var a = e.target.closest('a');
+      if (a) {
+        var href = a.getAttribute('href') || '';
+        if (/apply\/?$/.test(href) || /apply\//.test(href)) gtag('event','cta_apply_click',{link_url:href});
+        else if (/check\/?$/.test(href) || /check\//.test(href)) gtag('event','cta_check_click',{link_url:href});
+        else if (/^tel:/.test(href)) gtag('event','tel_click',{link_url:href});
+        else if (/^mailto:/.test(href)) gtag('event','mailto_click',{link_url:href});
+        else if (/^https?:/.test(href) && !/flow\.beyond-holdings/.test(href)) gtag('event','external_click',{link_url:href});
+      }
+      return;
+    }
+    var name = el.getAttribute('data-track');
+    var params = {};
+    Array.from(el.attributes).forEach(function(a){
+      if (a.name.indexOf('data-track-') === 0 && a.name !== 'data-track') params[a.name.slice(11).replace(/-/g,'_')] = a.value;
+    });
+    gtag('event', name, params);
+  });
+  // スクロール深度 (25/50/75/100)
+  var fired = {};
+  function onScroll(){
+    var h = document.documentElement;
+    var sc = (h.scrollTop || document.body.scrollTop);
+    var sh = (h.scrollHeight || document.body.scrollHeight) - h.clientHeight;
+    if (sh <= 0) return;
+    var pct = Math.round((sc / sh) * 100);
+    [25,50,75,100].forEach(function(t){
+      if (pct >= t && !fired[t]) { fired[t] = true; gtag('event','scroll_depth',{percent:t}); }
+    });
+  }
+  var to = null;
+  window.addEventListener('scroll', function(){ if (to) return; to = setTimeout(function(){ to = null; onScroll(); }, 300); }, {passive:true});
+})();
 </script>
 </body>
 </html>

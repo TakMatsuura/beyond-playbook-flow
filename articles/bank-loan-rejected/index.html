@@ -9,6 +9,11 @@
 <meta property="og:description" content="銀行に断られた時こそ、BS/PLから事業の構造を見直すチャンス。立て直しの軸を客観的に作り、実働まで落とす。BEYONDの伴走思想。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://flow.beyond-holdings.co.jp/articles/bank-loan-rejected/">
+<meta property="og:image" content="https://flow.beyond-holdings.co.jp/assets/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://flow.beyond-holdings.co.jp/assets/og-image.svg">
 <meta name="google-site-verification" content="K8GGOtOPGmibI8WbGJl34VhjA4uXMvbQb6e1H2q9bCs" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJY2SKCX2L"></script>
@@ -202,6 +207,24 @@ footer a:hover { color: var(--gold-bright); }
   .cta-btn-primary, .cta-btn-secondary { display: block; padding: 16px; }
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "「銀行に追加融資を断られた」の前後で、社長が本当に見るべき3つのこと",
+  "description": "銀行に断られた時こそ、BS/PLから事業の構造を見直すチャンス。BEYONDの伴走3ステップを解説。",
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "author": { "@type": "Organization", "name": "BEYOND Holdings 株式会社" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BEYOND Holdings 株式会社",
+    "logo": { "@type": "ImageObject", "url": "https://flow.beyond-holdings.co.jp/assets/beyond_logo.png" }
+  },
+  "mainEntityOfPage": "https://flow.beyond-holdings.co.jp/articles/bank-loan-rejected/",
+  "image": "https://flow.beyond-holdings.co.jp/assets/og-image.svg"
+}
+</script>
 </head>
 <body>
 
@@ -374,9 +397,10 @@ footer a:hover { color: var(--gold-bright); }
   <div class="related">
     <div class="related-title">RELATED ARTICLES</div>
     <ul>
-      <li><a href="#">リスケ(条件変更)を切り出す前に、社長がBS/PLで確認すべき7つのこと <span style="color:var(--text-soft); font-size:12px;">(準備中)</span></a></li>
-      <li><a href="#">代表交代直後の100日でやるべき、事業構造の棚卸し <span style="color:var(--text-soft); font-size:12px;">(準備中)</span></a></li>
-      <li><a href="#">顧問税理士・会計士と上手く付き合うコツと、見直しのタイミング <span style="color:var(--text-soft); font-size:12px;">(準備中)</span></a></li>
+      <li><a href="../banker-3-numbers/">銀行員が決算書で最初に見る3つの数字 ─ 社長も知っておくべき財務指標</a></li>
+      <li><a href="../rescheduling-before-bs-pl/">リスケを切り出す前に、社長がBS/PLで確認すべき7つのこと</a></li>
+      <li><a href="../representative-handover-100days/">代表交代直後の100日でやるべき、事業構造の棚卸し</a></li>
+      <li><a href="../tax-accountant-relationship/">顧問税理士・会計士と上手く付き合うコツと、見直しのタイミング</a></li>
     </ul>
   </div>
 
@@ -394,5 +418,101 @@ footer a:hover { color: var(--gold-bright); }
   </div>
 </footer>
 
+<script>
+// GA4 イベントトラッキング (CTAクリック・スクロール深度)
+(function(){
+  if (typeof gtag !== 'function') return;
+  // CTAクリック (data-track属性ベース)
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-track]');
+    if (!el) {
+      // フォールバック: 自動検出 (apply/, check/ への遷移)
+      var a = e.target.closest('a');
+      if (a) {
+        var href = a.getAttribute('href') || '';
+        if (/apply\/?$/.test(href) || /apply\//.test(href)) gtag('event','cta_apply_click',{link_url:href});
+        else if (/check\/?$/.test(href) || /check\//.test(href)) gtag('event','cta_check_click',{link_url:href});
+        else if (/^tel:/.test(href)) gtag('event','tel_click',{link_url:href});
+        else if (/^mailto:/.test(href)) gtag('event','mailto_click',{link_url:href});
+        else if (/^https?:/.test(href) && !/flow\.beyond-holdings/.test(href)) gtag('event','external_click',{link_url:href});
+      }
+      return;
+    }
+    var name = el.getAttribute('data-track');
+    var params = {};
+    Array.from(el.attributes).forEach(function(a){
+      if (a.name.indexOf('data-track-') === 0 && a.name !== 'data-track') params[a.name.slice(11).replace(/-/g,'_')] = a.value;
+    });
+    gtag('event', name, params);
+  });
+  // スクロール深度 (25/50/75/100)
+  var fired = {};
+  function onScroll(){
+    var h = document.documentElement;
+    var sc = (h.scrollTop || document.body.scrollTop);
+    var sh = (h.scrollHeight || document.body.scrollHeight) - h.clientHeight;
+    if (sh <= 0) return;
+    var pct = Math.round((sc / sh) * 100);
+    [25,50,75,100].forEach(function(t){
+      if (pct >= t && !fired[t]) { fired[t] = true; gtag('event','scroll_depth',{percent:t}); }
+    });
+  }
+  var to = null;
+  window.addEventListener('scroll', function(){ if (to) return; to = setTimeout(function(){ to = null; onScroll(); }, 300); }, {passive:true});
+})();
+</script>
+<script>
+// 自動目次生成 (article内のh2が3つ以上ある時のみ)
+(function(){
+  var article = document.querySelector('article');
+  if (!article) return;
+  if (article.querySelector('.toc')) return; // 静的TOC既存
+  var h2s = article.querySelectorAll('h2');
+  if (h2s.length < 3) return;
+  // h2にidが無ければ自動付与
+  h2s.forEach(function(h, i){
+    if (!h.id) h.id = 'sec-' + (i+1);
+  });
+  // TOC構築
+  var toc = document.createElement('div');
+  toc.className = 'toc';
+  toc.style.cssText = 'background:#fff;border:1px solid #e5e3dc;border-radius:8px;padding:20px 24px;margin:32px 0 48px;';
+  var title = document.createElement('div');
+  title.style.cssText = "font-family:'Inter',sans-serif;font-weight:800;font-size:12px;letter-spacing:0.2em;color:#a07d2c;margin-bottom:12px;";
+  title.textContent = 'CONTENTS';
+  toc.appendChild(title);
+  var ol = document.createElement('ol');
+  ol.style.cssText = 'list-style:none;padding:0;margin:0;counter-reset:toc;';
+  h2s.forEach(function(h){
+    var li = document.createElement('li');
+    li.style.cssText = 'counter-increment:toc;margin-bottom:8px;font-size:14px;line-height:1.7;';
+    var num = document.createElement('span');
+    num.textContent = '';
+    li.setAttribute('data-num','');
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.replace(/^\d+\.\s*/, '');
+    a.style.cssText = 'color:#1a1a1a;text-decoration:none;';
+    a.addEventListener('mouseenter', function(){ a.style.textDecoration='underline'; a.style.color='#0a1e3d'; });
+    a.addEventListener('mouseleave', function(){ a.style.textDecoration='none'; a.style.color='#1a1a1a'; });
+    li.appendChild(a);
+    ol.appendChild(li);
+  });
+  // CSS counter for numbering
+  var style = document.createElement('style');
+  style.textContent = '.toc ol li::before{content:counter(toc) ". ";color:#a07d2c;font-weight:700;font-family:Inter,sans-serif;}';
+  toc.appendChild(style);
+  toc.appendChild(ol);
+  // article-lead の後 or h1の後に挿入
+  var lead = article.querySelector('.article-lead');
+  if (lead) lead.parentNode.insertBefore(toc, lead.nextSibling);
+  else {
+    var h1 = article.querySelector('h1');
+    if (h1) h1.parentNode.insertBefore(toc, h1.nextSibling);
+  }
+  // スクロール時のヘッダーオフセット
+  h2s.forEach(function(h){ h.style.scrollMarginTop = '20px'; });
+})();
+</script>
 </body>
 </html>

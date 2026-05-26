@@ -49,6 +49,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://flow.beyond-holdings.co.jp/articles/banker-3-numbers/</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://flow.beyond-holdings.co.jp/privacy/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>yearly</changefreq>

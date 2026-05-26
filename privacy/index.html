@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="FLOW (BEYOND Playbook) のプライバシーポリシー。お預かりした個人情報の取り扱いについて。BEYOND Holdings 株式会社。">
+<meta property="og:image" content="https://flow.beyond-holdings.co.jp/assets/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://flow.beyond-holdings.co.jp/assets/og-image.svg">
 <meta name="google-site-verification" content="K8GGOtOPGmibI8WbGJl34VhjA4uXMvbQb6e1H2q9bCs" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJY2SKCX2L"></script>
@@ -45,6 +50,15 @@ footer a:hover { color: var(--gold-bright); }
 
 @media(max-width: 640px) { main { padding: 40px 16px 60px; } }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "プライバシーポリシー",
+  "url": "https://flow.beyond-holdings.co.jp/privacy/",
+  "description": "FLOW｜BEYOND Playbook のプライバシーポリシー。"
+}
+</script>
 </head>
 <body>
 
@@ -159,5 +173,48 @@ footer a:hover { color: var(--gold-bright); }
   © 2026 BEYOND Holdings 株式会社 ─ <a href="../">FLOW トップ</a>
 </footer>
 
+<script>
+// GA4 イベントトラッキング (CTAクリック・スクロール深度)
+(function(){
+  if (typeof gtag !== 'function') return;
+  // CTAクリック (data-track属性ベース)
+  document.addEventListener('click', function(e){
+    var el = e.target.closest('[data-track]');
+    if (!el) {
+      // フォールバック: 自動検出 (apply/, check/ への遷移)
+      var a = e.target.closest('a');
+      if (a) {
+        var href = a.getAttribute('href') || '';
+        if (/apply\/?$/.test(href) || /apply\//.test(href)) gtag('event','cta_apply_click',{link_url:href});
+        else if (/check\/?$/.test(href) || /check\//.test(href)) gtag('event','cta_check_click',{link_url:href});
+        else if (/^tel:/.test(href)) gtag('event','tel_click',{link_url:href});
+        else if (/^mailto:/.test(href)) gtag('event','mailto_click',{link_url:href});
+        else if (/^https?:/.test(href) && !/flow\.beyond-holdings/.test(href)) gtag('event','external_click',{link_url:href});
+      }
+      return;
+    }
+    var name = el.getAttribute('data-track');
+    var params = {};
+    Array.from(el.attributes).forEach(function(a){
+      if (a.name.indexOf('data-track-') === 0 && a.name !== 'data-track') params[a.name.slice(11).replace(/-/g,'_')] = a.value;
+    });
+    gtag('event', name, params);
+  });
+  // スクロール深度 (25/50/75/100)
+  var fired = {};
+  function onScroll(){
+    var h = document.documentElement;
+    var sc = (h.scrollTop || document.body.scrollTop);
+    var sh = (h.scrollHeight || document.body.scrollHeight) - h.clientHeight;
+    if (sh <= 0) return;
+    var pct = Math.round((sc / sh) * 100);
+    [25,50,75,100].forEach(function(t){
+      if (pct >= t && !fired[t]) { fired[t] = true; gtag('event','scroll_depth',{percent:t}); }
+    });
+  }
+  var to = null;
+  window.addEventListener('scroll', function(){ if (to) return; to = setTimeout(function(){ to = null; onScroll(); }, 300); }, {passive:true});
+})();
+</script>
 </body>
 </html>
