@@ -387,6 +387,20 @@ section { padding: 100px 0; }
 }
 .points-list li:last-child { border-bottom: none; }
 .points-cta { margin-top: 48px; text-align: center; font-size: 18px; font-weight: 700; line-height: 1.8; }
+.check-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 18px 36px; background: #fff; color: var(--accent);
+  border: 2px solid var(--accent); border-radius: 8px;
+  font-size: 15px; font-weight: 700; text-decoration: none;
+  transition: all 0.2s;
+}
+.check-cta-btn:hover {
+  background: var(--accent); color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(10,30,61,0.2);
+}
+.check-cta-btn strong { color: var(--gold-deep); transition: color 0.2s; }
+.check-cta-btn:hover strong { color: var(--gold-bright); }
 
 /* ============ ③数字 ============ */
 .stats-grid {
@@ -748,6 +762,12 @@ footer { background: #0a0e1a; color: rgba(255,255,255,0.7); padding: 56px 0 32px
       <strong>次の一手を、一緒に決めましょう。</strong><br>
       <span style="color:var(--text-soft); font-size:15px; font-weight:400;">3営業日以内に最初の方向性をお持ちします。</span>
     </p>
+    <div style="text-align:center; margin-top:36px;">
+      <a href="check/" class="check-cta-btn">
+        🩺 まず<strong>1分で財務体力をチェック</strong>してみる →
+      </a>
+      <div style="font-size:12px; color:var(--text-soft); margin-top:10px;">5問・平均45秒・無料・連絡先入力なし</div>
+    </div>
   </div>
 </section>
 
