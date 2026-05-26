@@ -74,13 +74,21 @@ header {
   .logo { gap: 10px; }
 }
 .header-cta {
-  display: flex; gap: 8px; align-items: center;
+  display: flex; gap: 16px; align-items: center;
 }
+.header-cta .header-nav-link {
+  font-size: 14px; color: var(--text); font-weight: 700;
+  text-decoration: none; padding: 8px 4px;
+  border-bottom: 2px solid transparent; transition: all 0.2s;
+}
+.header-cta .header-nav-link:hover { color: var(--accent); border-bottom-color: var(--gold); }
 .header-cta .quick {
   font-size: 13px; padding: 8px 16px; background: var(--accent); color: #fff;
   border-radius: 4px; font-weight: 700;
 }
 @media(max-width: 640px) {
+  .header-cta { gap: 10px; }
+  .header-cta .header-nav-link { font-size: 12px; padding: 6px 2px; }
   .header-cta .quick { padding: 6px 12px; font-size: 12px; }
   .logo .brand-name { font-size: 18px; }
 }
@@ -649,6 +657,7 @@ footer { background: #0a0e1a; color: rgba(255,255,255,0.7); padding: 56px 0 32px
       <span class="brand-name">FLOW</span>
     </a>
     <div class="header-cta">
+      <a href="articles/" class="header-nav-link">コラム</a>
       <a href="#cta" class="quick">ヒアリング申込</a>
     </div>
   </div>
@@ -1121,18 +1130,19 @@ footer { background: #0a0e1a; color: rgba(255,255,255,0.7); padding: 56px 0 32px
         <p>お金の流れを、止めない。<br>中小企業の資金繰り・銀行交渉・補助金活用に、即動く伴走サービス。<br>BEYOND Holdings 株式会社が運営する、BEYOND Playbook の一部です。</p>
       </div>
       <div class="footer-col">
-        <h4>BEYOND PLAYBOOK</h4>
+        <h4>サイト内</h4>
         <ul>
-          <li><a href="https://playbook.beyond-holdings.co.jp/">ハブサイト</a></li>
-          <li><a href="#">他のサービス一覧</a></li>
+          <li><a href="articles/">📰 コラム一覧</a></li>
+          <li><a href="check/">🩺 1分財務体力チェック</a></li>
+          <li><a href="apply/">✉️ ヒアリングを申し込む</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>運営会社</h4>
         <ul>
-          <li><a href="https://www.beyond-holdings.co.jp/">BEYOND Holdings</a></li>
-          <li><a href="#">プライバシーポリシー</a></li>
-          <li><a href="#">お問い合わせ</a></li>
+          <li><a href="https://www.beyond-holdings.co.jp/" target="_blank" rel="noopener">BEYOND Holdings</a></li>
+          <li><span style="opacity:0.5;">プライバシーポリシー (準備中)</span></li>
+          <li><a href="apply/">お問い合わせ</a></li>
         </ul>
       </div>
     </div>
