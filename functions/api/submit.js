@@ -21,7 +21,7 @@ export async function onRequestPost(context) {
     const requiredEnv = [
       'LINE_WORKS_CLIENT_ID', 'LINE_WORKS_CLIENT_SECRET',
       'LINE_WORKS_SERVICE_ACCOUNT', 'LINE_WORKS_BOT_ID',
-      'LINE_WORKS_NOTIFY_CHANNEL_ID', 'LINE_WORKS_PRIVATE_KEY',
+      'LINE_WORKS_MATSUURA_ID', 'LINE_WORKS_PRIVATE_KEY',
     ];
     const missing = requiredEnv.filter((k) => !env[k]);
     if (missing.length > 0) {
@@ -68,9 +68,9 @@ export async function onRequestPost(context) {
 
     const msg = formatNotification(data, jstNow);
 
-    // LINE WORKS Bot に チャネル送信 (FLOW申込通知 専用チャネル)
+    // LINE WORKS Bot で DM送信 (FLOW専用Bot → 松浦さん個人DM)
     const accessToken = await getAccessToken(env);
-    await sendChannelMessage(env, accessToken, env.LINE_WORKS_NOTIFY_CHANNEL_ID, msg);
+    await sendDirectMessage(env, accessToken, env.LINE_WORKS_MATSUURA_ID, msg);
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
@@ -154,10 +154,10 @@ async function getAccessToken(env) {
   return json.access_token;
 }
 
-async function sendChannelMessage(env, token, channelId, text) {
+async function sendDirectMessage(env, token, userId, text) {
   const body = { content: { type: 'text', text } };
   const res = await fetch(
-    `${API_BASE}/bots/${env.LINE_WORKS_BOT_ID}/channels/${channelId}/messages`,
+    `${API_BASE}/bots/${env.LINE_WORKS_BOT_ID}/users/${userId}/messages`,
     {
       method: 'POST',
       headers: {
@@ -169,7 +169,7 @@ async function sendChannelMessage(env, token, channelId, text) {
   );
   if (!res.ok) {
     const txt = await res.text();
-    throw new Error(`sendChannelMessage failed: ${res.status} ${txt.slice(0, 300)}`);
+    throw new Error(`sendDirectMessage failed: ${res.status} ${txt.slice(0, 300)}`);
   }
   return { ok: true, status: res.status };
 }
